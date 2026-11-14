@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bvgx2qohvi5kd"]
+
+[ext_resource type="Texture2D" uid="uid://bpdlvq17d2iak" path="res://assets/balls/0@10x.png" id="1_sd342"]
+[ext_resource type="Script" uid="uid://bwh2dwfneshws" path="res://assets/scripts/interaction_field.gd" id="1_u0kvx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17biy"]
+radius = 125.48307
+
+[node name="InteractionField" type="Area2D" unique_id=1297985144]
+collision_layer = 4
+script = ExtResource("1_u0kvx")
+
+[node name="0_10x" type="Sprite2D" parent="." unique_id=802281751]
+position = Vector2(1.9073486e-06, 2.3841858e-07)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_sd342")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=14921809]
+shape = SubResource("CircleShape2D_17biy")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=722458843]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

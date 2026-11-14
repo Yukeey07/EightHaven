@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpvugerkmyjhy" path="res://assets/scripts/gameManager.gd" id="1_yot8c"]
 [ext_resource type="Texture2D" uid="uid://dusj52bs1mwl3" path="res://assets/Queue@5x.png" id="2_07fqf"]
+[ext_resource type="Texture2D" uid="uid://cpka2bp4qouvo" path="res://assets/Group 9.png" id="2_x1kwt"]
 
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
@@ -16,6 +17,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.21960784, 0.4, 0.25490198, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=814621556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_x1kwt")
+expand_mode = 4
 
 [node name="Queue_5x" type="Sprite2D" parent="CanvasLayer" unique_id=874415612]
 position = Vector2(550, 590)

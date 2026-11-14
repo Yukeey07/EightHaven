@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cktbgdo8ji30f"]
+
+[ext_resource type="Texture2D" uid="uid://dusj52bs1mwl3" path="res://assets/Queue@5x.png" id="1_4blss"]
+[ext_resource type="Script" uid="uid://f3tkwra3o05q" path="res://assets/scripts/testing_field.gd" id="1_qhgyg"]
+[ext_resource type="Texture2D" uid="uid://dcfq1hhrkw564" path="res://assets/Border.png" id="2_1jpmp"]
+[ext_resource type="PackedScene" uid="uid://drnq53lohvym0" path="res://assets/scenes/Ball.tscn" id="3_w8g73"]
+[ext_resource type="PackedScene" uid="uid://bvgx2qohvi5kd" path="res://assets/scenes/InteractionField.tscn" id="4_w8g73"]
+
+[node name="TestingField" type="Node2D" unique_id=1176366227]
+script = ExtResource("1_qhgyg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1465237]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1907761035]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21960784, 0.4, 0.25490198, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Border" type="Sprite2D" parent="CanvasLayer" unique_id=846915395]
+position = Vector2(451, 750)
+texture = ExtResource("2_1jpmp")
+
+[node name="Queue_5x" type="Sprite2D" parent="CanvasLayer" unique_id=1954093183]
+position = Vector2(550, 590)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_4blss")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=504421585]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Ball" parent="." unique_id=46023174 instance=ExtResource("3_w8g73")]
+position = Vector2(371, 489)
+
+[node name="InteractionField" parent="." unique_id=1297985144 instance=ExtResource("4_w8g73")]
+position = Vector2(364, 138)
