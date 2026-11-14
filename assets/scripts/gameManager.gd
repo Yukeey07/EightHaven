@@ -20,7 +20,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	#check if turn is over
+	if ballsMoving():
+		Globals.turnOver = true
+		print("balls are moving")
+	else:
+		Globals.turnOver = false
+		print("balls are moving")
+
+func ballsMoving():
+	for i: Ball in allBalls:
+		if i.sleeping:
+			return false
+	return true
 
 func spawnBalls():
 	var target_pos : Vector2 = Vector2(0,-805)
