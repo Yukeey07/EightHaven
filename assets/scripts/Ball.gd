@@ -18,11 +18,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func setBallNum(num: int):
-	number = num
-
 func setBallTexture(num: int):
 	%Sprite.texture = textures[num]
+	number = num
 	if num != 0:
 		add_to_group("gameBall", true)
 		

@@ -8,6 +8,7 @@
 # Godot-specific ignores
 .import/
 export.cfg
+editor_layout.cfg
 export_credentials.cfg
 *.tmp
 
@@ -27,4 +28,8 @@ mono_crash.*.json
 .godot/editor/filesystem_cache10
 .godot/editor/script_editor_cache.cfg
 .DS_Store
+*.cfg
+.godot/editor/editor_layout.cfg
+.godot/editor/script_editor_cache.cfg
+/.godot
 *.cfg

@@ -15,6 +15,8 @@ func _ready() -> void:
 	print("test")
 	spawnBalls()
 	spawnBot()
+	await get_tree().create_timer(10.0).timeout
+	print(Globals.allPockets)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

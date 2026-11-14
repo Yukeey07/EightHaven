@@ -46,29 +46,37 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="Queue" parent="." unique_id=1734358920 instance=ExtResource("3_x1kwt")]
 
-[node name="InteractionField" parent="." unique_id=1297985144 instance=ExtResource("4_aufxv")]
+[node name="Pockets" type="Node" parent="." unique_id=1165862890]
+
+[node name="Pocket" parent="Pockets" unique_id=1297985144 instance=ExtResource("4_aufxv")]
 position = Vector2(1376, -2376)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
-[node name="InteractionField2" parent="." unique_id=598633871 instance=ExtResource("4_aufxv")]
+[node name="Pocket2" parent="Pockets" unique_id=598633871 instance=ExtResource("4_aufxv")]
 position = Vector2(-1376, -2376)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
-[node name="InteractionField3" parent="." unique_id=1053944973 instance=ExtResource("4_aufxv")]
+[node name="Pocket3" parent="Pockets" unique_id=1053944973 instance=ExtResource("4_aufxv")]
 position = Vector2(1376, 2376)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
-[node name="InteractionField4" parent="." unique_id=294028479 instance=ExtResource("4_aufxv")]
+[node name="Pocket4" parent="Pockets" unique_id=294028479 instance=ExtResource("4_aufxv")]
 position = Vector2(-1376, 2376)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
-[node name="InteractionField5" parent="." unique_id=1876599089 instance=ExtResource("4_aufxv")]
+[node name="Pocket5" parent="Pockets" unique_id=1876599089 instance=ExtResource("4_aufxv")]
 position = Vector2(1376, 9.094947e-13)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
-[node name="InteractionField6" parent="." unique_id=514128661 instance=ExtResource("4_aufxv")]
+[node name="Pocket6" parent="Pockets" unique_id=514128661 instance=ExtResource("4_aufxv")]
 position = Vector2(-1376, 9.094947e-13)
 scale = Vector2(0.7, 0.7)
+is_pocket = true
 
 [node name="Border" type="Node" parent="." unique_id=1392634587]
 
