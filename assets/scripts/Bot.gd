@@ -33,20 +33,22 @@ func calculateAllVectorsToPocets(origin: Ball):
 
 func generateVectorsForAiming():
 	var gameBall = allBalls[0]
-	for i in allBalls.size()-1:
+	for i in allBalls.size()/2-1:
 		#Vektoren von Spielball zu Ziel-Ball
-		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,allBalls[i+1]).length())
+		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,allBalls[i+8]).length())
 		#Vektoren von Allen Bällen zu allen Löchern
-		vectorsFromBallstoPockets.push_back(calculateAllVectorsToPocets(allBalls[i+1]))
+		vectorsFromBallstoPockets.push_back(calculateAllVectorsToPocets(allBalls[i+8]))
 	print(vectorsFromBallstoPockets)
 
 func checkVectors():
-	for i in vectorsFromGameBallToBalls:
-		for j in vectorsFromBallstoPockets:
-			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
-			pass
+	pass
+#	for i in vectorsFromGameBallToBalls:
+#		for j in vectorsFromBallstoPockets:
+#			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
+#			pass
 #			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
-#				possibleShots.push_back(vectorsFromBallstoPockets[j])
+#				possibleShots.push_back(vectorsFromGameBallToBalls[i])
+
 
 func checkDirection(vector1: Vector2, vector2: Vector2):
 	if(vector1.x<0 and vector2.x<0):
