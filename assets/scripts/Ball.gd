@@ -22,3 +22,5 @@ func setBallNum(num: int):
 
 func setBallTexture(num: int):
 	%Sprite.texture = textures[num]
+	if num != 0:
+		add_to_group("gameBall", true)
