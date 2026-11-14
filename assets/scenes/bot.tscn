@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cnmmfp1xy3eo"]
+
+[ext_resource type="Script" uid="uid://cv83es6v4xic3" path="res://assets/scripts/Bot.gd" id="1_apasg"]
+
+[node name="Bot" type="Node2D" unique_id=1351575136]
+script = ExtResource("1_apasg")
