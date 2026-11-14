@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dpvugerkmyjhy" path="res://assets/scripts/gameManager.gd" id="1_yot8c"]
 [ext_resource type="Texture2D" uid="uid://dfuw0k37llxmy" path="res://assets/Border.png" id="2_07fqf"]
+[ext_resource type="PackedScene" uid="uid://civmgbisij2p" path="res://assets/scenes/queue.tscn" id="3_x1kwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
+size = Vector2(776, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1kwt"]
+size = Vector2(660, 29.999985)
 
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
@@ -31,3 +38,59 @@ expand_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=56203908]
 zoom = Vector2(0.3, 0.3)
+
+[node name="Queue" parent="." unique_id=1734358920 instance=ExtResource("3_x1kwt")]
+
+[node name="Border" type="Node" parent="." unique_id=1392634587]
+
+[node name="T" type="StaticBody2D" parent="Border" unique_id=1980802667]
+position = Vector2(448, 16)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/T" unique_id=284253050]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_b8qth")
+
+[node name="B" type="StaticBody2D" parent="Border" unique_id=1969537477]
+position = Vector2(456, 1496)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/B" unique_id=2128640963]
+position = Vector2(-4, -6)
+shape = SubResource("RectangleShape2D_b8qth")
+
+[node name="LB" type="StaticBody2D" parent="Border" unique_id=1598001332]
+position = Vector2(8, 1056)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LB" unique_id=1675250658]
+position = Vector2(54, -7.0000143)
+shape = SubResource("RectangleShape2D_x1kwt")
+
+[node name="LT" type="StaticBody2D" parent="Border" unique_id=737241778]
+position = Vector2(8, 336)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LT" unique_id=287160361]
+position = Vector2(54, -7.0000143)
+shape = SubResource("RectangleShape2D_x1kwt")
+
+[node name="RB" type="StaticBody2D" parent="Border" unique_id=2142353902]
+position = Vector2(880, 1056)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RB" unique_id=310539821]
+position = Vector2(54, -7.0000143)
+shape = SubResource("RectangleShape2D_x1kwt")
+
+[node name="RT" type="StaticBody2D" parent="Border" unique_id=724641777]
+position = Vector2(880, 336)
+rotation = 1.5707964
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RT" unique_id=1406128730]
+position = Vector2(54, -7.0000143)
+shape = SubResource("RectangleShape2D_x1kwt")

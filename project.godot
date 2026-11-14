@@ -35,6 +35,7 @@ gameBall=""
 2d_render/layer_1="Player Collision Layer"
 2d_render/layer_2="Interaction Layer"
 2d_physics/layer_1="Player Collision Layer"
+2d_physics/layer_2="Border Collision Layer"
 2d_physics/layer_3="Interaction Layer"
 
 [physics]
