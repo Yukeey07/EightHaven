@@ -41,12 +41,13 @@ func generateVectorsForAiming():
 	print(vectorsFromBallstoPockets)
 
 func checkVectors():
-	for i in vectorsFromGameBallToBalls:
-		for j in vectorsFromBallstoPockets:
-			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
-			pass
-			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
-				possibleShots.push_back(calculateShot(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j]))
+	pass
+#	for i in vectorsFromGameBallToBalls:
+#		for j in vectorsFromBallstoPockets:
+#			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
+#			pass
+#			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
+#				possibleShots.push_back(calculateShot(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j]))
 
 
 func checkDirection(vector1: Vector2, vector2: Vector2):
