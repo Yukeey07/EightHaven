@@ -7,7 +7,7 @@ var allBalls = Globals.allBalls
 
 var index = 1
 var is_dragging = false
-var drag_offset = null
+var drag_offset = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -69,7 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event is InputEventMouseMotion and is_dragging:
 		var white_ball: Ball = allBalls.get(0)
 		
-		white_ball.apply_central_impulse(get_global_mouse_position() + drag_offset)
+		white_ball.apply_central_impulse(-(get_global_mouse_position() + drag_offset))
 
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	var white_ball: Ball = allBalls.get(0)
