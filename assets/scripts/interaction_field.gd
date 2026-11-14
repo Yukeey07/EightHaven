@@ -3,9 +3,11 @@ extends Area2D
 var interactedBall : Ball
 
 @export var is_pocket : bool = false
+@export var texture : Texture
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Sprite.texture = texture
 	$CanvasLayer/PocketHitBanner.hide()
 	if is_pocket:
 		Globals.allPockets.push_back(self)
