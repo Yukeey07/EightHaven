@@ -2,6 +2,8 @@ extends Node2D
 
 const BALL = preload("uid://drnq53lohvym0")
 
+var allBalls = []
+
 var index = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -25,11 +27,13 @@ func spawnBalls():
 		spawnBallRow(target_pos, i + 1)
 		target_pos += Vector2(62.5,-115)
 	index = 1
+	print(allBalls)
 	pass
 
 func spawnBallRow(startPos : Vector2, length: int):
 	for i in length:
 		var ball = BALL.instantiate()
+		allBalls.push_back(ball)
 		ball.setBallTexture(index)
 		index += 1
 		ball.position = startPos
