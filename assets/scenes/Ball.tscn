@@ -18,7 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://da1s7yhuj7dw5" path="res://assets/balls/14@10x.png" id="15_x6yc3"]
 [ext_resource type="Texture2D" uid="uid://bhq8sxbebgtui" path="res://assets/balls/15@10x.png" id="16_hmof2"]
 
-[node name="Ball" type="Node2D" unique_id=871185937]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kc0sw"]
+rough = true
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r04yy"]
+radius = 63.07139
+
+[node name="Ball" type="RigidBody2D" unique_id=46023174]
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_kc0sw")
+gravity_scale = 0.0
 script = ExtResource("1_xoxug")
 BallNumber = 9
 textures = Array[Texture]([ExtResource("2_hj1sw"), ExtResource("1_ohnxl"), ExtResource("3_um5og"), ExtResource("4_hj1sw"), ExtResource("5_8iabw"), ExtResource("6_povwc"), ExtResource("7_44hyo"), ExtResource("8_woqqf"), ExtResource("9_tcaop"), ExtResource("10_o2yr8"), ExtResource("11_5b6yr"), ExtResource("12_lqlig"), ExtResource("13_p70au"), ExtResource("14_daxv7"), ExtResource("15_x6yc3"), ExtResource("16_hmof2")])
@@ -27,3 +37,6 @@ textures = Array[Texture]([ExtResource("2_hj1sw"), ExtResource("1_ohnxl"), ExtRe
 unique_name_in_owner = true
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_ohnxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=68260081]
+shape = SubResource("CircleShape2D_r04yy")
