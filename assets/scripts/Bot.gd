@@ -9,8 +9,10 @@ var vectorsFromBallstoPockets = []
 var possibleShots = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	botShoot()
-	pass
+	if(Globals.turnOver):
+		botShoot()
+	else:
+		pass
 
 func botShoot():
 	var bestShot = findBestShot()
