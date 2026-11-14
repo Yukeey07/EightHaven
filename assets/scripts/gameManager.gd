@@ -2,7 +2,7 @@ extends Node2D
 
 const BALL = preload("uid://drnq53lohvym0")
 
-var index = 0
+var index = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,11 +15,16 @@ func _process(_delta: float) -> void:
 	pass
 
 func spawnBalls():
-	var target_pos : Vector2 = Vector2(0,0)
+	var target_pos : Vector2 = Vector2(0,-805)
+	var ball = BALL.instantiate()
+	ball.setBallTexture(0)
+	# One Ball is 115
+	ball.position = target_pos + Vector2(0,1725)
+	add_child(ball)
 	for i in 5:
 		spawnBallRow(target_pos, i + 1)
-		target_pos += Vector2(-62.5,115)
-	index = 0
+		target_pos += Vector2(62.5,-115)
+	index = 1
 	pass
 
 func spawnBallRow(startPos : Vector2, length: int):
@@ -29,5 +34,5 @@ func spawnBallRow(startPos : Vector2, length: int):
 		index += 1
 		ball.position = startPos
 		add_child(ball)
-		startPos += Vector2(125,0)
+		startPos += Vector2(-125,0)
 	pass
