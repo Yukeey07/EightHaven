@@ -8,6 +8,7 @@ var allBalls = Globals.allBalls
 var index = 1
 var is_dragging = false
 var drag_offset = Vector2.ZERO
+var wait_for_stop = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -60,7 +61,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if white_ball.global_position.distance_to(global_mouse_pos) < 200:
 			putQueueAroundWhiteBall(global_mouse_pos)
 			
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not wait_for_stop:
 		if event.pressed:
 			is_dragging = true
 			drag_offset = global_position - get_global_mouse_position()
@@ -68,6 +69,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_dragging = false
 			var white_ball: Ball = allBalls.get(0)
 			white_ball.apply_central_impulse(-((get_global_mouse_position() + drag_offset) * 20))
+			$Queue.hide()
+			wait_for_stop = true
+	elif event is InputEvent:
+		if wait_for_stop:
+			allBalls = allBalls.filter(func(b): return is_instance_valid(b))
+			
+			for ball: Ball in allBalls:
+				if not ball.sleeping:
+					return
+					
+			wait_for_stop = false
+			$Queue.show()
 		
 
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
