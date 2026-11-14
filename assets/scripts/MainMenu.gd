@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-const GAME_SCENE = preload("res://assets/scenes/game_scene.tscn")
-
 enum ButtonType {
 	START,
 	SETTINGS,
@@ -23,7 +21,6 @@ func _on_start_pressed() -> void:
 	$FadeTransition/Timer.start()
 	$FadeTransition/AnimationPlayer.play("Fade_in")
 	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
 
 
 func _on_settings_pressed() -> void:
@@ -41,7 +38,7 @@ func _on_quit_pressed() -> void:
 func _on_timer_timeout() -> void:
 	match current_button_type:
 		ButtonType.START:
-			get_tree().change_scene_to_file("res://assets/scenes/game.tscn")
+			get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
 		ButtonType.SETTINGS:
 			pass
 		ButtonType.QUIT:
