@@ -28,3 +28,5 @@ mono_crash.*.json
 .godot/editor/script_editor_cache.cfg
 .DS_Store
 *.cfg
+.godot/editor/editor_layout.cfg
+.godot/editor/script_editor_cache.cfg
