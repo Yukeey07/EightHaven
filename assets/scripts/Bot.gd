@@ -21,7 +21,8 @@ func ziele():
 		#Vektoren von Spielball zu Ziel-Ball
 		vectorFromGameBallToBalls.push_back(rechneVerbindung(gameBall,allBalls[i+1]).length())
 		#Vektoren von Allen Bällen zu allen Löchern
-		
+		for j in allPockets.size():
+			vectorFromBallstoPockets.push_back(rechneVerbindung(allBalls[i+1],allPockets[i].length()))
 
 func rechneVerbindung(origin: Ball, target: Ball):
 	var connectionVector = Vector2(origin.position.x-target.position.x,origin.position.y-target.position.y)
