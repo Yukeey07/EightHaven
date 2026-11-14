@@ -23,5 +23,6 @@ BallNumber = 9
 textures = Array[Texture]([ExtResource("1_ohnxl"), ExtResource("3_um5og"), ExtResource("4_hj1sw"), ExtResource("5_8iabw"), ExtResource("6_povwc"), ExtResource("7_44hyo"), ExtResource("8_woqqf"), ExtResource("9_tcaop"), ExtResource("10_o2yr8"), ExtResource("11_5b6yr"), ExtResource("12_lqlig"), ExtResource("13_p70au"), ExtResource("14_daxv7"), ExtResource("15_x6yc3"), ExtResource("16_hmof2")])
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=76638761]
-scale = Vector2(0.25, 0.25)
+unique_name_in_owner = true
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_ohnxl")

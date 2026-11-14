@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cxjb1m5mlijb5"]
+
+[ext_resource type="Script" uid="uid://dpvugerkmyjhy" path="res://assets/scripts/gameManager.gd" id="1_yot8c"]
+
+[node name="gameScene" type="Node2D" unique_id=1829530168]
+script = ExtResource("1_yot8c")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=56203908]
+zoom = Vector2(0.3, 0.3)

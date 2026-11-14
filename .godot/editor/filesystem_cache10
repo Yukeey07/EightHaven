@@ -3,7 +3,7 @@
 icon.svg::CompressedTexture2D::2309960226075256619::1794652091::1794652091::1::::<><><>0<>0<>a1b579e09f2a5c90da73056dc8cd257d<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 README.md::TextFile::-1::1794652091::0::1::::<><><>0<>0<><>::
 ::res://assets/::1794654556
-::res://assets/balls/::1794654606
+::res://assets/balls/::1794654615
 1@10x.png::CompressedTexture2D::1249849754366445547::1794654530::1794654615::1::::<><><>0<>0<>31a8f3f8f8e29dbafacdaeb79a07d5bf<>res://.godot/imported/1@10x.png-a88be66d9756c750a94f2bc25599d6c1.ctex::
 2@10x.png::CompressedTexture2D::169259274946830811::1794654530::1794654615::1::::<><><>0<>0<>d2fc00828ef2e1b9ee49a636041d5888<>res://.godot/imported/2@10x.png-a278465aa32bf01c11dfd09d62f9f433.ctex::
 3@10x.png::CompressedTexture2D::4197096318670911638::1794654530::1794654615::1::::<><><>0<>0<>ee1152fd326ee72a72f3dc19e42d0bd4<>res://.godot/imported/3@10x.png-1a9ddf216a42778228e967a83300e4ee.ctex::
@@ -19,9 +19,11 @@ README.md::TextFile::-1::1794652091::0::1::::<><><>0<>0<><>::
 13@10x.png::CompressedTexture2D::1945120048186614996::1794654530::1794654615::1::::<><><>0<>0<>eb047cfc0e6ae035f32f50a7be31029f<>res://.godot/imported/13@10x.png-15d5b4303adf7aa00c4740ae550369db.ctex::
 14@10x.png::CompressedTexture2D::7214087196255642214::1794654529::1794654615::1::::<><><>0<>0<>9ff6763f352771de5cefe7a95d227afe<>res://.godot/imported/14@10x.png-5e519de2d864b876d0905432a7e20154.ctex::
 15@10x.png::CompressedTexture2D::2912809648041059836::1794654529::1794654615::1::::<><><>0<>0<>599efbe982c2b7f9c140d601b52dbe31<>res://.godot/imported/15@10x.png-04b8476f577a8e433f1d3a1aef528332.ctex::
-::res://assets/scenes/::1794654560
-main_menu.tscn::PackedScene::4419885272164098018::1794654560::0::1::::<><><>0<>0<><>::
-player.tscn::PackedScene::158189512756265961::1794652342::0::1::::<><><>0<>0<><>::
-Ball.tscn::PackedScene::8380335837722997545::1794652339::0::1::::<><><>0<>0<><>::
-::res://assets/scripts/::1794654560
-MainMenu.gd::GDScript::7369454101906903244::1794654560::0::1::::<>Node<><>0<>0<><>::
+::res://assets/scenes/::1794655863
+main_menu.tscn::PackedScene::4419885272164098018::1794655863::0::1::::<><><>0<>0<><>::uid://dc823khm52tls::::res://assets/scripts/MainMenu.gd
+player.tscn::PackedScene::158189512756265961::1794654619::0::1::::<><><>0<>0<><>::
+Ball.tscn::PackedScene::8380335837722997545::1794655627::0::1::::<><><>0<>0<><>::uid://r2o3wlltmixn::::res://assets/balls/1@10x.png<>uid://bje38l8wm1mha::::res://assets/scripts/Ball.gd<>uid://cn8w76adqhnv::::res://assets/balls/2@10x.png<>uid://b02dtfav0pb0y::::res://assets/balls/3@10x.png<>uid://crno4aj3ryigd::::res://assets/balls/4@10x.png<>uid://cj4g2p6wiia37::::res://assets/balls/5@10x.png<>uid://ce0r45dul1ss7::::res://assets/balls/6@10x.png<>uid://63jrrhgxj7aa::::res://assets/balls/7@10x.png<>uid://dtpimgosedn5v::::res://assets/balls/8@10x.png<>uid://c55l7j0k2obou::::res://assets/balls/9@10x.png<>uid://dabxs3pm1ghwj::::res://assets/balls/10@10x.png<>uid://bc3bcq1xryfl7::::res://assets/balls/11@10x.png<>uid://bnbnnovq2m6ma::::res://assets/balls/12@10x.png<>uid://2yh3wrt8vyeu::::res://assets/balls/13@10x.png<>uid://da1s7yhuj7dw5::::res://assets/balls/14@10x.png<>uid://bhq8sxbebgtui::::res://assets/balls/15@10x.png
+game_scene.tscn::PackedScene::6405871995666362580::1794655902::0::1::::<><><>0<>0<><>::
+::res://assets/scripts/::1794655718
+MainMenu.gd::GDScript::7369454101906903244::1794655718::0::1::::<>CanvasLayer<><>0<>0<><>::
+Ball.gd::GDScript::3028137424200002862::1794655626::0::1::::<>Node<><>0<>0<><>::

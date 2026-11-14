@@ -54,20 +54,24 @@ _data = {
 &"RESET": SubResource("Animation_obrqb")
 }
 
-[node name="MainMenu" type="Node2D" unique_id=962452409]
+[node name="MainMenu" type="CanvasLayer" unique_id=2113336479]
 script = ExtResource("1_uu6ob")
 
 [node name="TextureRect" type="ColorRect" parent="." unique_id=659368731]
-offset_left = -11.0
-offset_top = -12.0
-offset_right = 1168.0
-offset_bottom = 664.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.39343828, 0.55831957, 0.5467982, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=328349971]
-offset_right = 1157.0
-offset_bottom = 647.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 
@@ -96,10 +100,11 @@ text = "Quit"
 
 [node name="FadeTransition" type="ColorRect" parent="." unique_id=175424541]
 visible = false
-offset_left = -13.0
-offset_top = -12.0
-offset_right = 1172.0
-offset_bottom = 662.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 

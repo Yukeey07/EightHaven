@@ -4,16 +4,19 @@ extends Node
 
 @export var textures: Array[Texture] = []
 
-@onready var sprite: Sprite2D = $Sprite
-
 var number = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	sprite.texture = textures[BallNumber]
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func setBallNum(num: int):
+	number = num
+
+func setBallTexture(num: int):
+	%Sprite.texture = textures[num]

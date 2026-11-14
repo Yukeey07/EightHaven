@@ -1,4 +1,6 @@
-extends Node2D
+extends CanvasLayer
+
+const GAME_SCENE = preload("res://assets/scenes/game_scene.tscn")
 
 enum ButtonType {
 	START,
@@ -20,6 +22,8 @@ func _on_start_pressed() -> void:
 	$FadeTransition.show()
 	$FadeTransition/Timer.start()
 	$FadeTransition/AnimationPlayer.play("Fade_in")
+	await get_tree().create_timer(1.0).timeout
+	get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
 
 
 func _on_settings_pressed() -> void:
