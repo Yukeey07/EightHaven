@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cxjb1m5mlijb5"]
 
 [ext_resource type="Script" uid="uid://dpvugerkmyjhy" path="res://assets/scripts/gameManager.gd" id="1_yot8c"]
-[ext_resource type="PackedScene" uid="uid://civmgbisij2p" path="res://assets/scenes/queue.tscn" id="2_07fqf"]
+[ext_resource type="Texture2D" uid="uid://dfuw0k37llxmy" path="res://assets/Border.png" id="2_07fqf"]
 
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
@@ -15,11 +15,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 color = Color(0.21960784, 0.4, 0.25490198, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=814621556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_07fqf")
+expand_mode = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=56203908]
 zoom = Vector2(0.3, 0.3)
-
-[node name="Queue" parent="." unique_id=1734358920 instance=ExtResource("2_07fqf")]
-position = Vector2(576, 781)

@@ -21,10 +21,21 @@ Globals="*uid://cgwsto6dg8pkg"
 
 [display]
 
-window/size/viewport_width=648
-window/size/viewport_height=1152
+window/size/viewport_width=901
+window/size/viewport_height=1501
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[global_group]
+
+gameBall=""
+
+[layer_names]
+
+2d_render/layer_1="Player Collision Layer"
+2d_render/layer_2="Interaction Layer"
+2d_physics/layer_1="Player Collision Layer"
+2d_physics/layer_3="Interaction Layer"
 
 [physics]
 
