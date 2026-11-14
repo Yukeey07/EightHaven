@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://civmgbisij2p"]
+
+[ext_resource type="Script" uid="uid://v3a0qk1ph20j" path="res://assets/scripts/queue.gd" id="1_6gw8u"]
+[ext_resource type="Texture2D" uid="uid://dusj52bs1mwl3" path="res://assets/Queue@5x.png" id="1_r2w1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
+size = Vector2(26, 1250)
+
+[node name="Queue" type="Node2D" unique_id=1734358920]
+script = ExtResource("1_6gw8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2044327144]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_r2w1b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=15793096]
+shape = SubResource("RectangleShape2D_b8qth")

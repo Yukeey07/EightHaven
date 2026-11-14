@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://civmgbisij2p"]
-
-[node name="Player" type="Node2D" unique_id=1734358920]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2044327144]
