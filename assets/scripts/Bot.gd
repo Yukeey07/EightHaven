@@ -1,7 +1,9 @@
 extends Node
 
 var allBalls = Globals.allBalls
-var vectorToBalls = []
+var allPockets = Globals.Pockets
+var vectorFromGameBallToBalls = []
+var vectorFromBallstoPockets = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ziele()
@@ -13,13 +15,14 @@ func _process(delta: float) -> void:
 	pass
 
 func ziele():
-	vectorToBalls.clear()
+	vectorFromGameBallToBalls.clear()
 	var gameBall = allBalls[0]
 	for i in allBalls.size()-1:
-		vectorToBalls.push_back(rechneVerbindung(gameBall,allBalls[i+1]).length())
-	vectorToBalls.sort()
-	print(vectorToBalls)
+		#Vektoren von Spielball zu Ziel-Ball
+		vectorFromGameBallToBalls.push_back(rechneVerbindung(gameBall,allBalls[i+1]).length())
+		#Vektoren von Allen Bällen zu allen Löchern
+		
 
-func rechneVerbindung(gameBall: Ball, aimBall: Ball):
-	var connectionVector = Vector2(gameBall.position.x-aimBall.position.x,gameBall.position.y-aimBall.position.y)
+func rechneVerbindung(origin: Ball, target: Ball):
+	var connectionVector = Vector2(origin.position.x-target.position.x,origin.position.y-target.position.y)
 	return connectionVector
