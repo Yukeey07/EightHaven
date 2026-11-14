@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://dpvugerkmyjhy" path="res://assets/scripts/gameManager.gd" id="1_yot8c"]
 [ext_resource type="Texture2D" uid="uid://dfuw0k37llxmy" path="res://assets/Border.png" id="2_07fqf"]
 [ext_resource type="PackedScene" uid="uid://civmgbisij2p" path="res://assets/scenes/queue.tscn" id="3_x1kwt"]
+[ext_resource type="PackedScene" uid="uid://bvgx2qohvi5kd" path="res://assets/scenes/InteractionField.tscn" id="4_aufxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
-size = Vector2(776, 28)
+size = Vector2(2608, 86)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1kwt"]
-size = Vector2(660, 29.999985)
+size = Vector2(2208, 83.5)
 
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
@@ -22,9 +23,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
 color = Color(0.21960784, 0.4, 0.25490198, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect" unique_id=814621556]
 layout_mode = 1
@@ -41,56 +43,80 @@ zoom = Vector2(0.3, 0.3)
 
 [node name="Queue" parent="." unique_id=1734358920 instance=ExtResource("3_x1kwt")]
 
+[node name="InteractionField" parent="." unique_id=1297985144 instance=ExtResource("4_aufxv")]
+position = Vector2(1376, -2376)
+scale = Vector2(0.7, 0.7)
+
+[node name="InteractionField2" parent="." unique_id=598633871 instance=ExtResource("4_aufxv")]
+position = Vector2(-1376, -2376)
+scale = Vector2(0.7, 0.7)
+
+[node name="InteractionField3" parent="." unique_id=1053944973 instance=ExtResource("4_aufxv")]
+position = Vector2(1376, 2376)
+scale = Vector2(0.7, 0.7)
+
+[node name="InteractionField4" parent="." unique_id=294028479 instance=ExtResource("4_aufxv")]
+position = Vector2(-1376, 2376)
+scale = Vector2(0.7, 0.7)
+
+[node name="InteractionField5" parent="." unique_id=1876599089 instance=ExtResource("4_aufxv")]
+position = Vector2(1376, 9.094947e-13)
+scale = Vector2(0.7, 0.7)
+
+[node name="InteractionField6" parent="." unique_id=514128661 instance=ExtResource("4_aufxv")]
+position = Vector2(-1376, 9.094947e-13)
+scale = Vector2(0.7, 0.7)
+
 [node name="Border" type="Node" parent="." unique_id=1392634587]
 
 [node name="T" type="StaticBody2D" parent="Border" unique_id=1980802667]
 position = Vector2(448, 16)
-collision_layer = 2
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/T" unique_id=284253050]
-position = Vector2(0, -4)
+position = Vector2(-448, -2475)
 shape = SubResource("RectangleShape2D_b8qth")
 
 [node name="B" type="StaticBody2D" parent="Border" unique_id=1969537477]
 position = Vector2(456, 1496)
-collision_layer = 2
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/B" unique_id=2128640963]
-position = Vector2(-4, -6)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border/B" unique_id=134480937]
+position = Vector2(-456, 960)
 shape = SubResource("RectangleShape2D_b8qth")
 
-[node name="LB" type="StaticBody2D" parent="Border" unique_id=1598001332]
+[node name="LT" type="StaticBody2D" parent="Border" unique_id=1598001332]
 position = Vector2(8, 1056)
 rotation = 1.5707964
-collision_layer = 2
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LB" unique_id=1675250658]
-position = Vector2(54, -7.0000143)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LT" unique_id=1675250658]
+position = Vector2(-2256, 1470.2477)
 shape = SubResource("RectangleShape2D_x1kwt")
 
-[node name="LT" type="StaticBody2D" parent="Border" unique_id=737241778]
+[node name="LB" type="StaticBody2D" parent="Border" unique_id=737241778]
 position = Vector2(8, 336)
 rotation = 1.5707964
-collision_layer = 2
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LT" unique_id=287160361]
-position = Vector2(54, -7.0000143)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/LB" unique_id=1769050359]
+position = Vector2(864.00006, 1472)
 shape = SubResource("RectangleShape2D_x1kwt")
 
-[node name="RB" type="StaticBody2D" parent="Border" unique_id=2142353902]
-position = Vector2(880, 1056)
+[node name="RT" type="StaticBody2D" parent="Border" unique_id=1703103902]
+position = Vector2(1456, -1200)
 rotation = 1.5707964
-collision_layer = 2
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RB" unique_id=310539821]
-position = Vector2(54, -7.0000143)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RT" unique_id=385909126]
+position = Vector2(-3.8146973e-06, 3.8146973e-06)
 shape = SubResource("RectangleShape2D_x1kwt")
 
-[node name="RT" type="StaticBody2D" parent="Border" unique_id=724641777]
-position = Vector2(880, 336)
+[node name="RB" type="StaticBody2D" parent="Border" unique_id=1954430356]
+position = Vector2(1456, 1200)
 rotation = 1.5707964
-collision_layer = 2
+collision_layer = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RT" unique_id=1406128730]
-position = Vector2(54, -7.0000143)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RB" unique_id=1332214836]
+position = Vector2(0, -1.5258789e-05)
 shape = SubResource("RectangleShape2D_x1kwt")

@@ -64,12 +64,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			drag_offset = global_position - get_global_mouse_position()
 		else:
 			is_dragging = false
-			print(drag_offset)
-
-	elif event is InputEventMouseMotion and is_dragging:
-		var white_ball: Ball = allBalls.get(0)
+			var white_ball: Ball = allBalls.get(0)
+			white_ball.apply_central_impulse(-((get_global_mouse_position() + drag_offset) * 20))
 		
-		white_ball.apply_central_impulse(-(get_global_mouse_position() + drag_offset))
 
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	var white_ball: Ball = allBalls.get(0)

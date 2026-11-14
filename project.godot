@@ -26,10 +26,6 @@ window/size/viewport_height=1501
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[global_group]
-
-gameBall=""
-
 [layer_names]
 
 2d_render/layer_1="Player Collision Layer"

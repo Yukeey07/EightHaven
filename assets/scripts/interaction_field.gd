@@ -14,17 +14,15 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.get_parent().is_in_group("gameBall"):
-		interactedBall = body.get_parent()
-		print("TEST RUN")
+	if body.is_in_group("gameBall"):
+		print("DB : BALL HIT THE POCKET")
+		body.queue_free()
 		pass
 	pass # Replace with function body.
 
 
 func _on_body_exited(body: Node2D) -> void:
 	print(body.get_parent())
-	if body.get_parent().is_in_group("gameBall"):
-		interactedBall = null
-		print("TEST RUN")
+	if body.is_in_group("gameBall"):
 		pass
 	pass # Replace with function body.
