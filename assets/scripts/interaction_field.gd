@@ -6,6 +6,7 @@ var interactedBall : Ball
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$CanvasLayer/PocketHitBanner.hide()
 	if is_pocket:
 		Globals.allPockets.push_back(self)
 		pass
@@ -20,8 +21,13 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("gameBall"):
-		print("DB : BALL HIT THE POCKET")
-		body.queue_free()
+		if is_pocket:
+			$CanvasLayer/PocketHitBanner/Label.text = "Ball " + str(body.number) + " is Out!"
+			body.queue_free()
+			$CanvasLayer/PocketHitBanner.show()
+			await get_tree().create_timer(5.0).timeout
+			$CanvasLayer/PocketHitBanner.hide()
+			pass
 		pass
 	pass # Replace with function body.
 
