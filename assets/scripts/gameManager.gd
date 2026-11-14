@@ -16,7 +16,6 @@ func _ready() -> void:
 	spawnBalls()
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout
-	print(Globals.allPockets)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +34,6 @@ func spawnBalls():
 		spawnBallRow(target_pos, i + 1)
 		target_pos += Vector2(62.5,-115)
 	index = 1
-	print(allBalls)
 	pass
 
 func spawnBallRow(startPos : Vector2, length: int):

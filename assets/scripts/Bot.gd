@@ -2,13 +2,21 @@ extends Node
 
 var allBalls = Globals.allBalls
 var allPockets = Globals.allPockets
+var gameBall: Ball = allBalls[0]
+var meaningfulBalls = []
 var vectorsFromGameBallToBalls = []
 var vectorsFromBallstoPockets = []
 var possibleShots = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	findBestShot()
-	pass # Replace with function body.
+	botShoot()
+	pass
+
+func botShoot():
+	var bestShot = findBestShot()
+	print(bestShot)
+	shoot(bestShot)
+	return true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,12 +24,22 @@ func _process(delta: float) -> void:
 	pass
 
 func findBestShot():
+	getAllMeaningfulBalls()
 	vectorsFromGameBallToBalls.clear()
 	vectorsFromBallstoPockets.clear()
 	generateVectorsForAiming()
 	checkVectors()
 	possibleShots.sort_custom(compareVectorLength)
 	return possibleShots[0]
+
+func getAllMeaningfulBalls():
+	for i in allBalls:
+		if i.number > 8:
+			meaningfulBalls.push_back(i)
+	if meaningfulBalls.is_empty():
+		for i in allBalls:
+			if i.number == 8:
+				meaningfulBalls.push_back(i)
 
 func compareVectorLength(a: Vector2,b: Vector2):
 	if(a.length()<b.length()):
@@ -40,11 +58,11 @@ func calculateAllVectorsToPocets(origin: Ball):
 
 func generateVectorsForAiming():
 	var gameBall = allBalls[0]
-	for i in allBalls.size()/2-1:
+	for i in meaningfulBalls.size():
 		#Vektoren von Spielball zu Ziel-Ball
-		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,allBalls[i+8]))
+		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,meaningfulBalls[i]))
 		#Vektoren von Allen Bällen zu allen Löchern
-		vectorsFromBallstoPockets.push_back(calculateAllVectorsToPocets(allBalls[i+8]))
+		vectorsFromBallstoPockets.push_back(calculateAllVectorsToPocets(meaningfulBalls[i]))
 	print(vectorsFromBallstoPockets)
 
 func checkVectors():
@@ -86,3 +104,7 @@ func calculateShot(vector1: Vector2, vector2: Vector2):
 			resultVector = Vector2(vector1.x*-1.03,vector1.y*-1.03)
 	#je nach unterschied werte von vektor von spielball zu zielball verändern.
 	return resultVector
+
+func shoot(vect: Vector2):
+	gameBall.apply_central_impulse(vect*2)
+	pass

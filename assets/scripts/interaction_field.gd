@@ -37,7 +37,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_body_exited(body: Node2D) -> void:
-	print(body.get_parent())
 	if body.is_in_group("gameBall"):
 		pass
 	pass # Replace with function body.
