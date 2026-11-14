@@ -1,6 +1,7 @@
 extends Node2D
 
 const BALL = preload("uid://drnq53lohvym0")
+const BOT = preload("res://assets/scenes/bot.tscn")
 
 var allBalls = Globals.allBalls
 
@@ -10,6 +11,7 @@ var index = 1
 func _ready() -> void:
 	print("test")
 	spawnBalls()
+	spawnBot()
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,5 +44,6 @@ func spawnBallRow(startPos : Vector2, length: int):
 		startPos += Vector2(-125,0)
 	pass
 
-func getallBalls():
-	return allBalls
+func spawnBot():
+	var bot = BOT.instantiate()
+	add_child(bot)
