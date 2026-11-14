@@ -21,6 +21,7 @@ func _on_start_pressed() -> void:
 	$FadeTransition/Timer.start()
 	$FadeTransition/AnimationPlayer.play("Fade_in")
 	await get_tree().create_timer(1.0).timeout
+	Globals.gameTimer.start()
 
 
 func _on_settings_pressed() -> void:

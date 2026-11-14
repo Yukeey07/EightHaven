@@ -22,10 +22,14 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("gameBall"):
 		if is_pocket:
+			if Globals.allBalls.size() < 1:
+				Globals.gameTimer.stop()
 			$CanvasLayer/PocketHitBanner/Label.text = "Ball " + str(body.number) + " is Out!"
+			var ball_index = Globals.allBalls.find(body)
+			Globals.allBalls.remove_at(ball_index)
 			body.queue_free()
 			$CanvasLayer/PocketHitBanner.show()
-			await get_tree().create_timer(5.0).timeout
+			await get_tree().create_timer(2.5).timeout
 			$CanvasLayer/PocketHitBanner.hide()
 			pass
 		pass
