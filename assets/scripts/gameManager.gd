@@ -47,3 +47,19 @@ func spawnBallRow(startPos : Vector2, length: int):
 func spawnBot():
 	var bot = BOT.instantiate()
 	add_child(bot)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		var white_ball: Ball = allBalls.get(0)
+		var global_mouse_pos: Vector2 = get_global_mouse_position()
+		
+		if white_ball.global_position.distance_to(global_mouse_pos) < 200:
+			putQueueAroundWhiteBall(global_mouse_pos)
+
+func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
+	var white_ball: Ball = allBalls.get(0)
+	var direction: Vector2 = (mousePos - white_ball.global_position).normalized()
+	
+	$Queue.global_position = white_ball.global_position + direction * 800.0
+	$Queue.look_at(white_ball.global_position)
+	$Queue.rotation_degrees += 90
