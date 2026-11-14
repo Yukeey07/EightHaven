@@ -1,5 +1,27 @@
 [gd_scene format=3 uid="uid://drnq53lohvym0"]
 
-[node name="Ball" type="Node2D" unique_id=871185937]
+[ext_resource type="Texture2D" uid="uid://r2o3wlltmixn" path="res://assets/balls/1@10x.png" id="1_ohnxl"]
+[ext_resource type="Script" uid="uid://bje38l8wm1mha" path="res://assets/scripts/Ball.gd" id="1_xoxug"]
+[ext_resource type="Texture2D" uid="uid://cn8w76adqhnv" path="res://assets/balls/2@10x.png" id="3_um5og"]
+[ext_resource type="Texture2D" uid="uid://b02dtfav0pb0y" path="res://assets/balls/3@10x.png" id="4_hj1sw"]
+[ext_resource type="Texture2D" uid="uid://crno4aj3ryigd" path="res://assets/balls/4@10x.png" id="5_8iabw"]
+[ext_resource type="Texture2D" uid="uid://cj4g2p6wiia37" path="res://assets/balls/5@10x.png" id="6_povwc"]
+[ext_resource type="Texture2D" uid="uid://ce0r45dul1ss7" path="res://assets/balls/6@10x.png" id="7_44hyo"]
+[ext_resource type="Texture2D" uid="uid://63jrrhgxj7aa" path="res://assets/balls/7@10x.png" id="8_woqqf"]
+[ext_resource type="Texture2D" uid="uid://dtpimgosedn5v" path="res://assets/balls/8@10x.png" id="9_tcaop"]
+[ext_resource type="Texture2D" uid="uid://c55l7j0k2obou" path="res://assets/balls/9@10x.png" id="10_o2yr8"]
+[ext_resource type="Texture2D" uid="uid://dabxs3pm1ghwj" path="res://assets/balls/10@10x.png" id="11_5b6yr"]
+[ext_resource type="Texture2D" uid="uid://bc3bcq1xryfl7" path="res://assets/balls/11@10x.png" id="12_lqlig"]
+[ext_resource type="Texture2D" uid="uid://bnbnnovq2m6ma" path="res://assets/balls/12@10x.png" id="13_p70au"]
+[ext_resource type="Texture2D" uid="uid://2yh3wrt8vyeu" path="res://assets/balls/13@10x.png" id="14_daxv7"]
+[ext_resource type="Texture2D" uid="uid://da1s7yhuj7dw5" path="res://assets/balls/14@10x.png" id="15_x6yc3"]
+[ext_resource type="Texture2D" uid="uid://bhq8sxbebgtui" path="res://assets/balls/15@10x.png" id="16_hmof2"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=76638761]
+[node name="Ball" type="Node2D" unique_id=871185937]
+script = ExtResource("1_xoxug")
+BallNumber = 9
+textures = Array[Texture]([ExtResource("1_ohnxl"), ExtResource("3_um5og"), ExtResource("4_hj1sw"), ExtResource("5_8iabw"), ExtResource("6_povwc"), ExtResource("7_44hyo"), ExtResource("8_woqqf"), ExtResource("9_tcaop"), ExtResource("10_o2yr8"), ExtResource("11_5b6yr"), ExtResource("12_lqlig"), ExtResource("13_p70au"), ExtResource("14_daxv7"), ExtResource("15_x6yc3"), ExtResource("16_hmof2")])
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=76638761]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ohnxl")
