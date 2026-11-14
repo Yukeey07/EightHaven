@@ -41,13 +41,12 @@ func generateVectorsForAiming():
 	print(vectorsFromBallstoPockets)
 
 func checkVectors():
-	pass
-#	for i in vectorsFromGameBallToBalls:
-#		for j in vectorsFromBallstoPockets:
-#			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
-#			pass
-#			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
-#				possibleShots.push_back(vectorsFromGameBallToBalls[i])
+	for i in vectorsFromGameBallToBalls:
+		for j in vectorsFromBallstoPockets:
+			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
+			pass
+			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
+				possibleShots.push_back(calculateShot(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j]))
 
 
 func checkDirection(vector1: Vector2, vector2: Vector2):
@@ -62,3 +61,22 @@ func checkDirection(vector1: Vector2, vector2: Vector2):
 		if(vector1.y>0 and vector2.y>0):
 			return true
 	return false
+
+func calculateShot(vector1: Vector2, vector2: Vector2):
+	var resultVector = Vector2()
+	#vektor von spielball zum zielball um die länge von vektor von zielball zur tasche verlängern
+	var straightVector = vector1+((vector1/vector1.length())*vector2.length())
+	var addedVector = vector1+vector2
+	#unterschied zwischen jenem vektor und dem vektor vom spielball zum zielball und von da zur tasche bestimmen
+	if(straightVector.x<addedVector.x):
+		if(straightVector.y<addedVector.y):
+			resultVector = Vector2(vector1.x*1.03,vector1.y*1.03)
+		if(straightVector.y>addedVector.y):
+			resultVector = Vector2(vector1.x*1.03,vector1.y*-1.03)
+	if(straightVector.x>addedVector.x):
+		if(straightVector.y<addedVector.y):
+			resultVector = Vector2(vector1.x*-1.03,vector1.y*1.03)
+		if(straightVector.y>addedVector.y):
+			resultVector = Vector2(vector1.x*-1.03,vector1.y*-1.03)
+	#je nach unterschied werte von vektor von spielball zu zielball verändern.
+	return resultVector
