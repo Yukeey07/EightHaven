@@ -23,3 +23,6 @@ mono_crash.*.json
 *.exe
 # Uncomment if your project does not version PCK files as runtime dependencies.
 # *.pck
+.godot/editor/editor_layout.cfg
+.godot/editor/filesystem_cache10
+.godot/editor/script_editor_cache.cfg
