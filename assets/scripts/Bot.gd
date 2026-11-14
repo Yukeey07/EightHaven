@@ -7,7 +7,7 @@ var vectorsFromBallstoPockets = []
 var possibleShots = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	ziele()
+	findBestShot()
 	pass # Replace with function body.
 
 
@@ -15,11 +15,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func ziele():
+func findBestShot():
 	vectorsFromGameBallToBalls.clear()
 	vectorsFromBallstoPockets.clear()
 	generateVectorsForAiming()
 	checkVectors()
+	possibleShots.sort_custom(compareVectorLength)
+	return possibleShots[0]
+
+func compareVectorLength(a: Vector2,b: Vector2):
+	if(a.length()<b.length()):
+		return true
+	return false
 
 func calculateVectorFromGameBallToBall(origin: Ball, target: Ball):
 	var connectionVector = Vector2(origin.position.x-target.position.x,origin.position.y-target.position.y)
@@ -35,19 +42,17 @@ func generateVectorsForAiming():
 	var gameBall = allBalls[0]
 	for i in allBalls.size()/2-1:
 		#Vektoren von Spielball zu Ziel-Ball
-		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,allBalls[i+8]).length())
+		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,allBalls[i+8]))
 		#Vektoren von Allen Bällen zu allen Löchern
 		vectorsFromBallstoPockets.push_back(calculateAllVectorsToPocets(allBalls[i+8]))
 	print(vectorsFromBallstoPockets)
 
 func checkVectors():
-	pass
-#	for i in vectorsFromGameBallToBalls:
-#		for j in vectorsFromBallstoPockets:
-#			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
-#			pass
-#			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j])):
-#				possibleShots.push_back(calculateShot(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[j]))
+	for i in vectorsFromGameBallToBalls.size():
+		for j in vectorsFromBallstoPockets[i].size():
+			# prüfen ob für x: + und + oder - und - .und für y: + und + oder - und -
+			if(checkDirection(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[i][j])):
+				possibleShots.push_back(calculateShot(vectorsFromGameBallToBalls[i],vectorsFromBallstoPockets[i][j]))
 
 
 func checkDirection(vector1: Vector2, vector2: Vector2):
