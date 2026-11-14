@@ -2,7 +2,7 @@ extends Node2D
 
 const BALL = preload("uid://drnq53lohvym0")
 
-var allBalls = []
+var allBalls = Globals.allBalls
 
 var index = 1
 
@@ -19,6 +19,7 @@ func _process(_delta: float) -> void:
 func spawnBalls():
 	var target_pos : Vector2 = Vector2(0,-805)
 	var ball = BALL.instantiate()
+	allBalls.push_back(ball)
 	ball.setBallTexture(0)
 	# One Ball is 115
 	ball.position = target_pos + Vector2(0,1725)
@@ -40,3 +41,6 @@ func spawnBallRow(startPos : Vector2, length: int):
 		add_child(ball)
 		startPos += Vector2(-125,0)
 	pass
+
+func getallBalls():
+	return allBalls
