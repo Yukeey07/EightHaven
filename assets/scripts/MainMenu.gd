@@ -1,11 +1,45 @@
-extends Node
+extends Node2D
 
+enum ButtonType {
+	START,
+	SETTINGS,
+	QUIT
+}
+
+var current_button_type = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$FadeTransition.show()
+	$FadeTransition/AnimationPlayer.play("Fade_out")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_start_pressed() -> void:
+	current_button_type = ButtonType.START
+	
+	$FadeTransition.show()
+	$FadeTransition/Timer.start()
+	$FadeTransition/AnimationPlayer.play("Fade_in")
+
+
+func _on_settings_pressed() -> void:
+	current_button_type = ButtonType.SETTINGS
+
+
+func _on_quit_pressed() -> void:
+	current_button_type = ButtonType.QUIT
+	
+	$FadeTransition.show()
+	$FadeTransition/Timer.start()
+	$FadeTransition/AnimationPlayer.play("Fade_in")
+
+
+func _on_timer_timeout() -> void:
+	match current_button_type:
+		ButtonType.START:
+			# get_tree().change_scene_to_file("")
+			pass
+		ButtonType.SETTINGS:
+			pass
+		ButtonType.QUIT:
+			get_tree().quit()
