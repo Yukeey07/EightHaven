@@ -2,8 +2,13 @@ extends Area2D
 
 var interactedBall : Ball
 
+@export var is_pocket : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if is_pocket:
+		Globals.allPockets.push_back(self)
+		pass
 	pass # Replace with function body.
 
 

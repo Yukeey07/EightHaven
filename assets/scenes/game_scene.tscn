@@ -11,6 +11,9 @@ size = Vector2(2608, 86)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1kwt"]
 size = Vector2(2208, 83.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aufxv"]
+size = Vector2(208, 83.5)
+
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
 
@@ -120,3 +123,104 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/RB" unique_id=1332214836]
 position = Vector2(0, -1.5258789e-05)
 shape = SubResource("RectangleShape2D_x1kwt")
+
+[node name="PB1" type="StaticBody2D" parent="Border" unique_id=495003570]
+position = Vector2(1536, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/PB1" unique_id=372184418]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PB2" type="StaticBody2D" parent="Border" unique_id=762206055]
+position = Vector2(-1544, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/PB2" unique_id=1491600643]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="CPB1" type="Node2D" parent="Border" unique_id=699884085]
+position = Vector2(-1408, -2400)
+
+[node name="PB3" type="StaticBody2D" parent="Border/CPB1" unique_id=564481596]
+position = Vector2(-136, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB1/PB3" unique_id=1178392895]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PB4" type="StaticBody2D" parent="Border/CPB1" unique_id=1842390968]
+position = Vector2(0, -144)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB1/PB4" unique_id=886746603]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="CPB2" type="Node2D" parent="Border" unique_id=80140221]
+position = Vector2(1392, -2408)
+rotation = 1.5707964
+
+[node name="PB3" type="StaticBody2D" parent="Border/CPB2" unique_id=1758291052]
+position = Vector2(-136, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB2/PB3" unique_id=989219673]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PB4" type="StaticBody2D" parent="Border/CPB2" unique_id=763459100]
+position = Vector2(0, -144)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB2/PB4" unique_id=1556222410]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="CPB3" type="Node2D" parent="Border" unique_id=1125634923]
+position = Vector2(1400, 2392)
+rotation = 3.1415927
+
+[node name="PB3" type="StaticBody2D" parent="Border/CPB3" unique_id=1139942318]
+position = Vector2(-136, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB3/PB3" unique_id=1074364369]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PB4" type="StaticBody2D" parent="Border/CPB3" unique_id=365740941]
+position = Vector2(0, -144)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB3/PB4" unique_id=1027606828]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="CPB4" type="Node2D" parent="Border" unique_id=1076850155]
+position = Vector2(-1400, 2400)
+rotation = 4.712389
+
+[node name="PB3" type="StaticBody2D" parent="Border/CPB4" unique_id=1942719828]
+position = Vector2(-136, 0)
+rotation = 1.5707964
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB4/PB3" unique_id=1496003429]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PB4" type="StaticBody2D" parent="Border/CPB4" unique_id=1967579176]
+position = Vector2(0, -144)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB4/PB4" unique_id=144103954]
+position = Vector2(0, -3.4969094e-07)
+shape = SubResource("RectangleShape2D_aufxv")
