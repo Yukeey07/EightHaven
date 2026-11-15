@@ -1,8 +1,14 @@
 extends Node
 
+enum Players {
+	PLAYER,
+	BOT
+}
+
 var allBalls = []
 var allPockets = []
 var turnOver: bool = true
+var turn: Players = Players.PLAYER
 var shootSoundPlayed = true
 
 var gameTimer : Timer = Timer.new()

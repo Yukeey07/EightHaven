@@ -9,21 +9,15 @@ var vectorsFromBallstoPockets = []
 var possibleShots = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if(Globals.turnOver):
-		botShoot()
-	else:
-		pass
+	pass
 
 func botShoot():
 	var bestShot = findBestShot()
 	print(bestShot)
 	shoot(bestShot)
+	Globals.turn = Globals.Players.PLAYER
 	return true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func findBestShot():
 	getAllMeaningfulBalls()

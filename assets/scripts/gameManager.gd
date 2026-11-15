@@ -11,23 +11,21 @@ var drag_offset = Vector2.ZERO
 var wait_for_stop = false
 var drag_start_pos: Vector2 = Vector2.ZERO
 const MAX_DRAG_DISTANCE: float = 500.0
+var bot = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
 	spawnBalls()
-	#spawnBot()
+	spawnBot()
 	await get_tree().create_timer(10.0).timeout
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#check if turn is over
-	if ballsMoving():
-		Globals.turnOver = true
-		print("balls are moving")
+	if not wait_for_stop and Globals.turn == Globals.Players.BOT:
+		bot.botShoot()
 	else:
-		Globals.turnOver = false
-		print("balls are moving")
+		pass
 
 func ballsMoving():
 	allBalls = allBalls.filter(func(b): return is_instance_valid(b))
@@ -63,7 +61,7 @@ func spawnBallRow(startPos : Vector2, length: int):
 	pass
 
 func spawnBot():
-	var bot = BOT.instantiate()
+	bot = BOT.instantiate()
 	add_child(bot)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -93,6 +91,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_dragging = false
 			white_ball.sleeping = false
 			white_ball.apply_central_impulse(drag_offset * 20)
+			Globals.turn = Globals.Players.BOT
 			$Queue.hide()
 			$PowerBar.hide()
 			Globals.shootSoundPlayed = false
