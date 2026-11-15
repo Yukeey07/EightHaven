@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfuw0k37llxmy" path="res://assets/Border.png" id="2_07fqf"]
 [ext_resource type="PackedScene" uid="uid://civmgbisij2p" path="res://assets/scenes/queue.tscn" id="3_x1kwt"]
 [ext_resource type="PackedScene" uid="uid://bvgx2qohvi5kd" path="res://assets/scenes/InteractionField.tscn" id="4_aufxv"]
+[ext_resource type="PackedScene" uid="uid://bvkc3pn4hqe08" path="res://assets/scenes/power_bar.tscn" id="5_5t2cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
 size = Vector2(2608, 86)
@@ -232,3 +233,9 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Border/CPB4/PB4" unique_id=144103954]
 position = Vector2(0, -3.4969094e-07)
 shape = SubResource("RectangleShape2D_aufxv")
+
+[node name="PowerBar" parent="." unique_id=442573329 instance=ExtResource("5_5t2cw")]
+offset_left = 2615.0
+offset_top = -465.0
+offset_right = 2615.0
+offset_bottom = -465.0
