@@ -78,21 +78,25 @@ func spawnBlockades(amount : int):
 		
 		if num == 0: # TOP LEFT
 			var target_pos = findValidPosition(Vector2(-1060.0, randf_range(300.0, 2000.0) * -1))
+			print(target_pos)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
 		elif num == 1: # TOP RIGHT
 			var target_pos = findValidPosition(Vector2(1060.0, randf_range(300.0, 2000.0) * -1))
+			print(target_pos)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
 		elif num == 2: # BOTTOM LEFT
 			var target_pos = findValidPosition(Vector2(-1060.0, randf_range(300.0, 2000.0)))
+			print(target_pos)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
 		elif num == 3: # BOTTOM RIGHT
 			var target_pos = findValidPosition(Vector2(1060.0, randf_range(300.0, 2000.0)))
+			print(target_pos)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
@@ -100,12 +104,14 @@ func spawnBlockades(amount : int):
 		$Blockades.add_child(blockage)
 
 func findValidPosition(pos : Vector2):
+	print(pos)
 	for ab in Globals.allBlockages:
 		if ab.position.distance_to(pos) > 4:
 			return pos
 		else:
 			var new_pos = Vector2(pos.x, randf_range(300.0, 2000.0))
 			return new_pos
+	return pos
 
 func spawnBot():
 	bot = BOT.instantiate()
