@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cpbyaqo7nkjfa"]
+
+[ext_resource type="Script" uid="uid://ixgij1yx4tv2" path="res://assets/scripts/pause_menu.gd" id="1_8ekew"]
+[ext_resource type="Texture2D" uid="uid://cshvrw4gmr8no" path="res://assets/LogoAndBanner.svg" id="2_uo1om"]
+[ext_resource type="Texture2D" uid="uid://c7kuhmty26ak7" path="res://assets/UI/continue-nohover-nopress.svg" id="3_ne6sd"]
+[ext_resource type="Texture2D" uid="uid://bbhbmoxbag50m" path="res://assets/UI/continue-nohover-press.svg" id="4_8uikw"]
+[ext_resource type="Texture2D" uid="uid://bma7oitp15wk0" path="res://assets/UI/continue-hover-nopress.svg" id="5_f7r3j"]
+[ext_resource type="Texture2D" uid="uid://ctme6qor0mhdv" path="res://assets/UI/settings-nohover-nopress.svg" id="6_cwixa"]
+[ext_resource type="Texture2D" uid="uid://dgjijdse4pop6" path="res://assets/UI/settings-nohover-press.svg" id="7_haf1s"]
+[ext_resource type="Texture2D" uid="uid://diomb5aascng7" path="res://assets/UI/settings-hover-nopress.svg" id="8_5r7g6"]
+[ext_resource type="Texture2D" uid="uid://bow2bnsmnqps3" path="res://assets/UI/quit-nohover-nopress.svg" id="9_ao7o5"]
+[ext_resource type="Texture2D" uid="uid://cf5iw836rlsu" path="res://assets/UI/quit-nohover-press.svg" id="10_5xmqo"]
+[ext_resource type="Texture2D" uid="uid://dr7unuf4bb7xw" path="res://assets/UI/quit-hover-nopress.svg" id="11_b6hjh"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=579981086]
+process_mode = 3
+script = ExtResource("1_8ekew")
+
+[node name="TextureRect" type="ColorRect" parent="." unique_id=659368731]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4862745)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=328349971]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Banner" type="TextureRect" parent="VBoxContainer" unique_id=1312131411]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+texture = ExtResource("2_uo1om")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1501098133]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer" unique_id=1115474424]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Continue" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=964008071]
+layout_mode = 2
+texture_normal = ExtResource("3_ne6sd")
+texture_pressed = ExtResource("4_8uikw")
+texture_hover = ExtResource("5_f7r3j")
+
+[node name="Settings" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1708825340]
+layout_mode = 2
+texture_normal = ExtResource("6_cwixa")
+texture_pressed = ExtResource("7_haf1s")
+texture_hover = ExtResource("8_5r7g6")
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=884920274]
+layout_mode = 2
+texture_normal = ExtResource("9_ao7o5")
+texture_pressed = ExtResource("10_5xmqo")
+texture_hover = ExtResource("11_b6hjh")
+
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

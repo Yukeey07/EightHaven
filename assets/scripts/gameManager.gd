@@ -15,10 +15,11 @@ var bot = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
+	print("test")
 	spawnBalls()
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -28,8 +29,6 @@ func _process(_delta: float) -> void:
 		pass
 
 func ballsMoving():
-	allBalls = allBalls.filter(func(b): return is_instance_valid(b))
-	
 	for i: Ball in allBalls:
 		if i.sleeping:
 			return false
@@ -65,49 +64,40 @@ func spawnBot():
 	add_child(bot)
 
 func _unhandled_input(event: InputEvent) -> void:
-	print(wait_for_stop)
-	var white_ball: Ball = allBalls.get(0)
-	if not is_instance_valid(white_ball):
-		return
-
-	if event is InputEventMouseMotion:
+	if event.is_action_pressed("pause_game"):
+		toggle_pause(!Globals.isMenu)
+	
+	if event.is_action_pressed("restart_game"):
+		get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
+		
+	if event is InputEventMouse:
+		var white_ball: Ball = allBalls.get(0)
 		var global_mouse_pos: Vector2 = get_global_mouse_position()
 		
-		if not is_dragging and white_ball.global_position.distance_to(global_mouse_pos) < 200 and not wait_for_stop:
+		if white_ball.global_position.distance_to(global_mouse_pos) < 200:
 			putQueueAroundWhiteBall(global_mouse_pos)
 			
-		if is_dragging and not wait_for_stop:
-			drag_offset = (drag_start_pos - global_mouse_pos).limit_length(MAX_DRAG_DISTANCE)
-			var power = clamp(int(drag_offset.length() / (MAX_DRAG_DISTANCE / 5.0)) + 1, 1, 5)
-			$PowerBar.set_power(power)
-
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not wait_for_stop:
 		if event.pressed:
 			is_dragging = true
-			drag_start_pos = get_global_mouse_position()
-			drag_offset = Vector2.ZERO
-			$PowerBar.set_power(1)
-		elif is_dragging:
+			drag_offset = global_position - get_global_mouse_position()
+		else:
 			is_dragging = false
 			white_ball.sleeping = false
 			white_ball.apply_central_impulse(drag_offset * 20)
 			Globals.turn = Globals.Players.BOT
 			$Queue.hide()
-			$PowerBar.hide()
-			Globals.shootSoundPlayed = false
 			wait_for_stop = true
-
-func _physics_process(_delta: float) -> void:
-	if wait_for_stop:
-		allBalls = allBalls.filter(func(b): return is_instance_valid(b))
-		
-		for ball: Ball in allBalls:
-			if not ball.sleeping:
-				return
-				
-		wait_for_stop = false
-		$Queue.show()
-		$PowerBar.show()
+	elif event is InputEvent:
+		if wait_for_stop:
+			allBalls = allBalls.filter(func(b): return is_instance_valid(b))
+			
+			for ball: Ball in allBalls:
+				if not ball.sleeping:
+					return
+					
+			wait_for_stop = false
+			$Queue.show()
 
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	var white_ball: Ball = allBalls.get(0)
@@ -116,4 +106,34 @@ func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	$Queue.global_position = white_ball.global_position + direction * 800.0
 	$Queue.look_at(white_ball.global_position)
 	$Queue.rotation_degrees += 90
-	$PowerBar.global_position = $Queue.global_position + Vector2(0, 100)
+
+func _on_pause_pressed() -> void:
+	toggle_pause(true)
+	pass # Replace with function body.
+
+func _on_resume_pressed() -> void:
+	toggle_pause(false)
+	pass # Replace with function body.
+
+func toggle_pause(pause : bool):
+	Globals.isMenu = pause
+	$GameOverlay/Gradient.visible = pause
+	get_tree().paused = pause
+	$GameOverlay/Controls/BottomControls/Pause.visible = !pause
+	$GameOverlay/Controls/BottomControls/Resume.visible = pause
+	
+	$GameOverlay/Controls/BottomControls/Settings.visible = pause
+	$GameOverlay/Controls/BottomControls/Quit.visible = pause
+
+func _on_restart_pressed() -> void:
+	get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
+	pass # Replace with function body.
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_settings_pressed() -> void:
+	pass # Replace with function body.
