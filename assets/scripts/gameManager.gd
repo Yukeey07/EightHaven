@@ -2,10 +2,9 @@ extends Node2D
 
 const BALL = preload("uid://drnq53lohvym0")
 const BOT = preload("res://assets/scenes/bot.tscn")
-
 const BLOCKADE = preload("uid://0jfp5sv6yhj3")
 
-var allBalls = Globals.allBalls
+var allBalls: Array = []
 
 var index = 1
 var is_dragging = false
@@ -15,51 +14,58 @@ var drag_start_pos: Vector2 = Vector2.ZERO
 const MAX_DRAG_DISTANCE: float = 500.0
 var bot = null
 
-var rng : RandomNumberGenerator
+var rng: RandomNumberGenerator
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Globals.allBalls.clear()
+	Globals.allBlockages.clear()
+	allBalls = Globals.allBalls
+
 	rng = RandomNumberGenerator.new()
 	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
 	spawnBalls()
-	spawnBlockades(5)
+	spawnBlockades(4)
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if not wait_for_stop and Globals.turn == Globals.Players.BOT:
-		var white_ball: Ball = allBalls.get(0)
+		if allBalls.is_empty() or not is_instance_valid(allBalls[0]):
+			return
+		var white_ball: Ball = allBalls[0]
 		white_ball.sleeping = false
 		bot.botShoot()
 		$Queue.hide()
 		$PowerBar.hide()
 		Globals.shootSoundPlayed = false
 		wait_for_stop = true
-	else:
-		pass
 
-func ballsMoving():
+
+func ballsMoving() -> bool:
 	for i: Ball in allBalls:
-		if i.sleeping:
+		if is_instance_valid(i) and i.sleeping:
 			return false
 	return true
 
-func spawnBalls():
-	var target_pos : Vector2 = Vector2(0,-805)
+
+func spawnBalls() -> void:
+	var target_pos: Vector2 = Vector2(0, -805)
 	var ball = BALL.instantiate()
 	allBalls.push_back(ball)
 	ball.setBallTexture(0)
 	# One Ball is 115
-	ball.position = target_pos + Vector2(0,1725)
+	ball.position = target_pos + Vector2(0, 1725)
 	add_child(ball)
 	for i in 5:
 		spawnBallRow(target_pos, i + 1)
-		target_pos += Vector2(62.5,-115)
+		target_pos += Vector2(62.5, -115)
 	index = 1
-	pass
 
-func spawnBallRow(startPos : Vector2, length: int):
+
+func spawnBallRow(startPos: Vector2, length: int) -> void:
 	for i in length:
 		var ball = BALL.instantiate()
 		allBalls.push_back(ball)
@@ -67,58 +73,74 @@ func spawnBallRow(startPos : Vector2, length: int):
 		index += 1
 		ball.position = startPos
 		add_child(ball)
-		startPos += Vector2(-125,0)
-	pass
+		startPos += Vector2(-125, 0)
 
-func spawnBlockades(amount : int):
+
+func spawnBlockades(amount: int) -> void:
 	for i in amount:
 		var blockage = BLOCKADE.instantiate()
-		var num = rng.randi_range(0,3)
+		var num = rng.randi_range(0, 3)
 		print(num)
 		
 		if num == 0: # TOP LEFT
-			var target_pos = findValidPosition(Vector2(-1060.0, randf_range(300.0, 2000.0) * -1))
+			var target_pos = findValidPosition(-1060.0, -1.0)
 			blockage.position = target_pos
-			blockage.isLeft = false
+			blockage.isLeft = true
 		
 		elif num == 1: # TOP RIGHT
-			var target_pos = findValidPosition(Vector2(1060.0, randf_range(300.0, 2000.0) * -1))
+			var target_pos = findValidPosition(1060.0, -1.0)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
 		elif num == 2: # BOTTOM LEFT
-			var target_pos = findValidPosition(Vector2(-1060.0, randf_range(300.0, 2000.0)))
+			var target_pos = findValidPosition(-1060.0, 1.0)
 			blockage.position = target_pos
-			blockage.isLeft = false
+			blockage.isLeft = true
 		
 		elif num == 3: # BOTTOM RIGHT
-			var target_pos = findValidPosition(Vector2(1060.0, randf_range(300.0, 2000.0)))
+			var target_pos = findValidPosition(1060.0, 1.0)
 			blockage.position = target_pos
 			blockage.isLeft = false
 		
 		Globals.allBlockages.append(blockage)
 		$Blockades.add_child(blockage)
 
-func findValidPosition(pos : Vector2):
-	for ab in Globals.allBlockages:
-		if ab.position.distance_to(pos) > 4:
-			return pos
-		else:
-			var new_pos = Vector2(pos.x, randf_range(300.0, 2000.0))
-			return new_pos
 
-func spawnBot():
+func findValidPosition(x_pos: float, y_sign: float) -> Vector2:
+	var pos := Vector2(x_pos, rng.randf_range(300.0, 2000.0) * y_sign)
+	var attempts := 0
+	
+	while attempts < 20:
+		var valid := true
+		for ab in Globals.allBlockages:
+			if is_instance_valid(ab) and ab.position.distance_to(pos) <= 500.0:
+				valid = false
+				break
+		if valid:
+			return pos
+		pos = Vector2(x_pos, rng.randf_range(300.0, 2000.0) * y_sign)
+		attempts += 1
+	
+	return pos
+
+
+func spawnBot() -> void:
 	bot = BOT.instantiate()
 	add_child(bot)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_game"):
 		toggle_pause(!Globals.isMenu)
 	
 	if event.is_action_pressed("restart_game"):
-		get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://assets/scenes/main_menu.tscn")
+		return
 		
-	var white_ball: Ball = allBalls.get(0)
+	if allBalls.is_empty():
+		return
+	var white_ball: Ball = allBalls[0]
 	if not is_instance_valid(white_ball):
 		return
 
@@ -148,10 +170,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			$PowerBar.hide()
 			Globals.shootSoundPlayed = false
 			wait_for_stop = true
-			
+
+
 func _physics_process(_delta: float) -> void:
 	if wait_for_stop:
-		allBalls = allBalls.filter(func(b): return is_instance_valid(b))
+		Globals.allBalls = Globals.allBalls.filter(func(b): return is_instance_valid(b))
+		allBalls = Globals.allBalls
 
 		for ball: Ball in allBalls:
 			if not ball.sleeping:
@@ -161,8 +185,11 @@ func _physics_process(_delta: float) -> void:
 		$Queue.show()
 		$PowerBar.show()
 
+
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
-	var white_ball: Ball = allBalls.get(0)
+	if allBalls.is_empty() or not is_instance_valid(allBalls[0]):
+		return
+	var white_ball: Ball = allBalls[0]
 	var direction: Vector2 = (mousePos - white_ball.global_position).normalized()
 
 	$Queue.global_position = white_ball.global_position + direction * 800.0
@@ -170,33 +197,33 @@ func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	$Queue.rotation_degrees += 90
 	$PowerBar.global_position = $Queue.global_position + Vector2(0, 100)
 
+
 func _on_pause_pressed() -> void:
 	toggle_pause(true)
-	pass # Replace with function body.
+
 
 func _on_resume_pressed() -> void:
 	toggle_pause(false)
-	pass # Replace with function body.
 
-func toggle_pause(pause : bool):
+
+func toggle_pause(pause: bool) -> void:
 	Globals.isMenu = pause
 	$GameOverlay/Gradient.visible = pause
 	get_tree().paused = pause
 	$GameOverlay/Controls/BottomControls/Pause.visible = !pause
 	$GameOverlay/Controls/BottomControls/Resume.visible = pause
-	
 	$GameOverlay/Controls/BottomControls/Settings.visible = pause
 	$GameOverlay/Controls/BottomControls/Quit.visible = pause
 
+
 func _on_restart_pressed() -> void:
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
-	pass # Replace with function body.
 
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
-	pass # Replace with function body.
 
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
+	pass
