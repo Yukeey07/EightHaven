@@ -92,7 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			$PowerBar.set_power(1)
 		elif is_dragging:
 			is_dragging = false
-			white_ball.sleeping = false # <--- WICHTIG: Sofort aufwecken!
+			white_ball.sleeping = false
 			white_ball.apply_central_impulse(drag_offset * 20)
 			$Queue.hide()
 			$PowerBar.hide()
