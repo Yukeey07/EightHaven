@@ -9,9 +9,12 @@ extends RigidBody2D
 
 var number = 0
 
+var speedup = false
+var timer := Timer.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_child(timer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +30,10 @@ func setBallTexture(num: int):
 		add_to_group("whiteBall", true)
 		
 func _integrate_forces(state: PhysicsDirectBodyState2D):#
+	if speedup:
+		state.linear_velocity = state.linear_velocity + Vector2(2, 2)
+		state.angular_velocity += 2
+	
 	if state.linear_velocity.length() < stop_threshold:
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0.0
@@ -46,3 +53,15 @@ func resetPhysics():
 	physics_material_override.bounce = 0.5
 	physics_material_override.friction = 1.5
 	mass = 5
+	
+func setSpeedUp(seconds: float):
+	timer.wait_time = seconds
+	timer.one_shot = true
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+	speedup = true
+	pass
+	
+func _on_timer_timeout():
+	speedup = false
+	pass

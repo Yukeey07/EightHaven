@@ -53,7 +53,6 @@ func calculateAllVectorsToPocets(origin: Ball):
 	return allVectorsFromOrigionToPockets
 
 func generateVectorsForAiming():
-	var gameBall = allBalls[0]
 	for i in meaningfulBalls.size():
 		#Vektoren von Spielball zu Ziel-Ball
 		vectorsFromGameBallToBalls.push_back(calculateVectorFromGameBallToBall(gameBall,meaningfulBalls[i]))
@@ -102,5 +101,5 @@ func calculateShot(vector1: Vector2, vector2: Vector2):
 	return resultVector
 
 func shoot(vect: Vector2):
-	gameBall.apply_central_impulse(vect*2)
+	gameBall.apply_central_impulse(vect*20)
 	pass
