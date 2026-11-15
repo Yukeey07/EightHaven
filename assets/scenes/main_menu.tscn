@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://b38a4ntl8d3x3"]
 
 [ext_resource type="Script" uid="uid://dc823khm52tls" path="res://assets/scripts/MainMenu.gd" id="1_uu6ob"]
+[ext_resource type="Texture2D" uid="uid://bs4q2cc03sma3" path="res://assets/Field.png" id="2_v1ppo"]
+[ext_resource type="Texture2D" uid="uid://cshvrw4gmr8no" path="res://assets/LogoAndBanner.svg" id="3_obrqb"]
+[ext_resource type="Texture2D" uid="uid://b4qm4ku1hk1uu" path="res://assets/UI/play-nohover-nopress.svg" id="4_fntub"]
+[ext_resource type="Texture2D" uid="uid://cefde5y8x14bd" path="res://assets/UI/play-nohover-press.svg" id="5_4hf8p"]
+[ext_resource type="Texture2D" uid="uid://dmgd71xmrx3sh" path="res://assets/UI/play-hover-nopress.svg" id="6_k5f6t"]
+[ext_resource type="Texture2D" uid="uid://ctme6qor0mhdv" path="res://assets/UI/settings-nohover-nopress.svg" id="7_4ny72"]
+[ext_resource type="Texture2D" uid="uid://dgjijdse4pop6" path="res://assets/UI/settings-nohover-press.svg" id="8_hr71l"]
+[ext_resource type="Texture2D" uid="uid://diomb5aascng7" path="res://assets/UI/settings-hover-nopress.svg" id="9_0vdp6"]
+[ext_resource type="Texture2D" uid="uid://bow2bnsmnqps3" path="res://assets/UI/quit-nohover-nopress.svg" id="10_6x4qq"]
+[ext_resource type="Texture2D" uid="uid://cf5iw836rlsu" path="res://assets/UI/quit-nohover-press.svg" id="11_pc4aj"]
+[ext_resource type="Texture2D" uid="uid://dr7unuf4bb7xw" path="res://assets/UI/quit-hover-nopress.svg" id="12_gcpkp"]
 
 [sub_resource type="Animation" id="Animation_uu6ob"]
 resource_name = "Fade_in"
@@ -57,14 +68,17 @@ _data = {
 [node name="MainMenu" type="CanvasLayer" unique_id=2113336479]
 script = ExtResource("1_uu6ob")
 
-[node name="TextureRect" type="ColorRect" parent="." unique_id=659368731]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1123778767]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 mouse_filter = 2
-color = Color(0.39343828, 0.55831957, 0.5467982, 1)
+texture = ExtResource("2_v1ppo")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=328349971]
 anchors_preset = 15
@@ -75,28 +89,46 @@ grow_vertical = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1054296906]
+[node name="Banner" type="TextureRect" parent="VBoxContainer" unique_id=666159191]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-text = "EightHaven"
-horizontal_alignment = 1
+texture = ExtResource("3_obrqb")
+expand_mode = 2
+stretch_mode = 5
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1501098133]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer" unique_id=1115474424]
 layout_mode = 2
+theme_override_constants/separation = 24
 
-[node name="Start" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1604653310]
+[node name="Start" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=335604404]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-text = "Play"
+texture_normal = ExtResource("4_fntub")
+texture_pressed = ExtResource("5_4hf8p")
+texture_hover = ExtResource("6_k5f6t")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Settings" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1465968717]
+[node name="Settings" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=243109894]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-text = "Settings"
+texture_normal = ExtResource("7_4ny72")
+texture_pressed = ExtResource("8_hr71l")
+texture_hover = ExtResource("9_0vdp6")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Quit" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1345231436]
+[node name="Quit" type="TextureButton" parent="VBoxContainer/CenterContainer/VBoxContainer" unique_id=1464700577]
+custom_minimum_size = Vector2(250, 150)
 layout_mode = 2
-text = "Quit"
+texture_normal = ExtResource("10_6x4qq")
+texture_pressed = ExtResource("11_pc4aj")
+texture_hover = ExtResource("12_gcpkp")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="FadeTransition" type="ColorRect" parent="." unique_id=175424541]
 visible = false

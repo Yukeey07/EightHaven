@@ -64,6 +64,12 @@ func spawnBot():
 	add_child(bot)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause_game"):
+		toggle_pause(!Globals.isMenu)
+	
+	if event.is_action_pressed("restart_game"):
+		get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
+		
 	if event is InputEventMouse:
 		var white_ball: Ball = allBalls.get(0)
 		var global_mouse_pos: Vector2 = get_global_mouse_position()
@@ -91,7 +97,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					
 			wait_for_stop = false
 			$Queue.show()
-		
 
 func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	var white_ball: Ball = allBalls.get(0)
@@ -100,3 +105,34 @@ func putQueueAroundWhiteBall(mousePos: Vector2) -> void:
 	$Queue.global_position = white_ball.global_position + direction * 800.0
 	$Queue.look_at(white_ball.global_position)
 	$Queue.rotation_degrees += 90
+
+func _on_pause_pressed() -> void:
+	toggle_pause(true)
+	pass # Replace with function body.
+
+func _on_resume_pressed() -> void:
+	toggle_pause(false)
+	pass # Replace with function body.
+
+func toggle_pause(pause : bool):
+	Globals.isMenu = pause
+	$GameOverlay/Gradient.visible = pause
+	get_tree().paused = pause
+	$GameOverlay/Controls/BottomControls/Pause.visible = !pause
+	$GameOverlay/Controls/BottomControls/Resume.visible = pause
+	
+	$GameOverlay/Controls/BottomControls/Settings.visible = pause
+	$GameOverlay/Controls/BottomControls/Quit.visible = pause
+
+func _on_restart_pressed() -> void:
+	get_tree().change_scene_to_file("res://assets/scenes/game_scene.tscn")
+	pass # Replace with function body.
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
+
+
+func _on_settings_pressed() -> void:
+	pass # Replace with function body.
