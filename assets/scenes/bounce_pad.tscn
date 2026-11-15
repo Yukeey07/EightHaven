@@ -1,14 +1,10 @@
 [gd_scene format=3 uid="uid://bajf53tdbklkg"]
 
 [ext_resource type="Script" uid="uid://bwcgcjfhmvqc2" path="res://assets/scripts/bounce_pad.gd" id="1_wijh8"]
+[ext_resource type="Texture2D" uid="uid://gsw51n8nd05a" path="res://assets/Boost.png" id="2_14rsg"]
 
-[sub_resource type="Gradient" id="Gradient_upcwf"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_upcwf"]
-gradient = SubResource("Gradient_upcwf")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
-size = Vector2(162, 162)
+[sub_resource type="CircleShape2D" id="CircleShape2D_14rsg"]
+radius = 112.36102
 
 [node name="BouncePad" type="Area2D" unique_id=158659561]
 collision_layer = 4
@@ -16,11 +12,11 @@ script = ExtResource("1_wijh8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1683611025]
 position = Vector2(1.9073486e-06, 1.9073486e-06)
-scale = Vector2(0.6328125, 162)
-texture = SubResource("GradientTexture1D_upcwf")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_14rsg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1645609049]
 position = Vector2(-1.9073486e-06, -1.9073486e-06)
-shape = SubResource("RectangleShape2D_b8qth")
+shape = SubResource("CircleShape2D_14rsg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

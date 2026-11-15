@@ -3,6 +3,7 @@ extends Node2D
 const BALL = preload("uid://drnq53lohvym0")
 const BOT = preload("res://assets/scenes/bot.tscn")
 const BLOCKADE = preload("uid://0jfp5sv6yhj3")
+const BOUNCE_PAD = preload("uid://bajf53tdbklkg")
 
 var allBalls: Array = []
 
