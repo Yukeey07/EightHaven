@@ -29,7 +29,13 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if not wait_for_stop and Globals.turn == Globals.Players.BOT:
+		var white_ball: Ball = allBalls.get(0)
+		white_ball.sleeping = false
 		bot.botShoot()
+		$Queue.hide()
+		$PowerBar.hide()
+		Globals.shootSoundPlayed = false
+		wait_for_stop = true
 	else:
 		pass
 
