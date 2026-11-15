@@ -95,7 +95,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			white_ball.apply_central_impulse(drag_offset * 20)
 			$Queue.hide()
 			$PowerBar.hide()
-			AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SHOOT)
+			Globals.shootSoundPlayed = false
 			wait_for_stop = true
 
 func _physics_process(_delta: float) -> void:

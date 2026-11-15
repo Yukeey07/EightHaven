@@ -3,6 +3,7 @@ extends Node
 var allBalls = []
 var allPockets = []
 var turnOver: bool = true
+var shootSoundPlayed = true
 
 var gameTimer : Timer = Timer.new()
 

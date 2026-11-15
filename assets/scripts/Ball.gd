@@ -29,3 +29,12 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):#
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0.0
 		sleeping = true
+
+
+
+
+
+func _on_body_entered(body: Node) -> void:
+	if not Globals.shootSoundPlayed:
+		AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SHOOT)
+		Globals.shootSoundPlayed = true

@@ -19,8 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://bhq8sxbebgtui" path="res://assets/balls/15@10x.png" id="16_hmof2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kc0sw"]
+friction = 1.5
 rough = true
-bounce = 0.3
+bounce = 0.5
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r04yy"]
 radius = 64.0
@@ -30,9 +31,11 @@ radius = 48.0
 
 [node name="Ball" type="RigidBody2D" unique_id=46023174]
 collision_mask = 3
-mass = 3.0
+mass = 5.0
 physics_material_override = SubResource("PhysicsMaterial_kc0sw")
 gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 8
 script = ExtResource("1_xoxug")
 BallNumber = 9
 textures = Array[Texture]([ExtResource("2_hj1sw"), ExtResource("1_ohnxl"), ExtResource("3_um5og"), ExtResource("4_hj1sw"), ExtResource("5_8iabw"), ExtResource("6_povwc"), ExtResource("7_44hyo"), ExtResource("8_woqqf"), ExtResource("9_tcaop"), ExtResource("10_o2yr8"), ExtResource("11_5b6yr"), ExtResource("12_lqlig"), ExtResource("13_p70au"), ExtResource("14_daxv7"), ExtResource("15_x6yc3"), ExtResource("16_hmof2")])
@@ -51,3 +54,5 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1961395763]
 shape = SubResource("CircleShape2D_b8qth")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
