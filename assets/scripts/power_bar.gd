@@ -1,6 +1,6 @@
 extends Control
 
-signal power_selected(power: int)
+#signal power_selected(_power: int)
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 

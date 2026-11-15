@@ -38,6 +38,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Globals.allBalls.size() == 0:
+		$Win.show()
+		pass
+	
 	if not wait_for_stop and Globals.turn == Globals.Players.BOT:
 		if allBalls.is_empty() or not is_instance_valid(allBalls[0]):
 			return

@@ -6,11 +6,19 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g7eu"]
 size = Vector2(84.99999, 814)
 
+[sub_resource type="Gradient" id="Gradient_5hrc2"]
+colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gy15o"]
+gradient = SubResource("Gradient_5hrc2")
+
 [node name="Blockade" type="Sprite2D" unique_id=1051290853]
 texture = ExtResource("1_1g7eu")
+flip_h = true
 script = ExtResource("2_gy15o")
 
 [node name="Block" type="StaticBody2D" parent="." unique_id=251542348]
+visible = false
 position = Vector2(1456, 1200)
 rotation = 1.5707964
 collision_layer = 3
@@ -18,3 +26,10 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Block" unique_id=1915842330]
 position = Vector2(-1200.4999, 1474)
 shape = SubResource("RectangleShape2D_1g7eu")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=757506771]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+position = Vector2(32.749985, 60.75)
+scale = Vector2(3.0644531, 38.5)
+texture = SubResource("GradientTexture1D_gy15o")

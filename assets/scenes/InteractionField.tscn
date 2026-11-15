@@ -43,6 +43,20 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.07082722, 0.07082721, 0.07082722, 1)
 
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/PocketHitBanner" unique_id=931531737]
+self_modulate = Color(0, 0, 0, 0.39215687)
+z_index = -1
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07082722, 0.07082721, 0.07082722, 1)
+
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/PocketHitBanner" unique_id=218543813]
 layout_mode = 1
 anchors_preset = 14

@@ -7,16 +7,16 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("whiteBall"):
+	if body.is_in_group("whiteBall") or body.is_in_group("gameBall"):
 		print("test")
 		body.makeVeryBouncy()
 		body.setSpeedUp(5)
-		monitoring = false
+		set_deferred("monitoring", false)
 		hide()
 		await get_tree().create_timer(5).timeout
 		queue_free()

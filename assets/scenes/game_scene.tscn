@@ -38,6 +38,12 @@ size = Vector2(2208, 83.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aufxv"]
 size = Vector2(208, 83.5)
 
+[sub_resource type="Gradient" id="Gradient_5hrc2"]
+colors = PackedColorArray(0, 0, 0, 0.5882353, 0, 0, 0, 0.5882353)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c068n"]
+gradient = SubResource("Gradient_5hrc2")
+
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
 
@@ -354,6 +360,39 @@ position = Vector2(0, -3.4969094e-07)
 shape = SubResource("RectangleShape2D_aufxv")
 
 [node name="Blockades" type="Node" parent="." unique_id=953919058]
+
+[node name="Win" type="CanvasLayer" parent="." unique_id=1430722545]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Win" unique_id=1720972882]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Win" unique_id=1793734281]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "YOU WON!"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1930730116]
+self_modulate = Color(0, 0, 0, 0.5882353)
+z_index = -1
+position = Vector2(0.06235075, -2406)
+scale = Vector2(10.187988, 24.2499)
+texture = SubResource("GradientTexture1D_c068n")
 
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Resume" to="." method="_on_resume_pressed"]
