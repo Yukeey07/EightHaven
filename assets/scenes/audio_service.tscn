@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvkttcqgfpyoc" path="res://assets/scripts/audioService.gd" id="1_0htuv"]
 [ext_resource type="Script" uid="uid://crxg3wqy6vuqq" path="res://assets/scripts/soundEffect.gd" id="2_aig13"]
 [ext_resource type="AudioStream" uid="uid://ej40bqwdo12m" path="res://assets/sounds/alex_jauk-billiard-sound-01-288421.mp3" id="3_e4l7j"]
+[ext_resource type="AudioStream" uid="uid://c0baa3xa3fn76" path="res://assets/sounds/alex-morgan-chillhop-jazz-coffee-shop-552792.mp3" id="4_e4l7j"]
 
 [sub_resource type="Resource" id="Resource_0htuv"]
 script = ExtResource("2_aig13")
@@ -10,6 +11,12 @@ sound_effect = ExtResource("3_e4l7j")
 volume = 10
 metadata/_custom_type_script = "uid://crxg3wqy6vuqq"
 
+[sub_resource type="Resource" id="Resource_rk5j0"]
+script = ExtResource("2_aig13")
+type = 1
+sound_effect = ExtResource("4_e4l7j")
+metadata/_custom_type_script = "uid://crxg3wqy6vuqq"
+
 [node name="AudioService" type="Node2D" unique_id=1575733723]
 script = ExtResource("1_0htuv")
-sound_effects = Array[ExtResource("2_aig13")]([SubResource("Resource_0htuv")])
+sound_effects = Array[ExtResource("2_aig13")]([SubResource("Resource_0htuv"), SubResource("Resource_rk5j0")])

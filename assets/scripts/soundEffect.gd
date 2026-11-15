@@ -2,7 +2,8 @@ extends Resource
 class_name SoundEffect
 
 enum SOUND_EFFECT_TYPE {
-	SHOOT
+	SHOOT,
+	BACKGROUND_MUSIC_1
 }
 
 @export var type: SOUND_EFFECT_TYPE

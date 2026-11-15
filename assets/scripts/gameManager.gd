@@ -14,11 +14,10 @@ const MAX_DRAG_DISTANCE: float = 500.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("test")
+	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
 	spawnBalls()
 	#spawnBot()
 	await get_tree().create_timer(10.0).timeout
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
