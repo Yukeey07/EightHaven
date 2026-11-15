@@ -5,7 +5,10 @@ const BOT = preload("res://assets/scenes/bot.tscn")
 const BLOCKADE = preload("uid://0jfp5sv6yhj3")
 const BOUNCE_PAD = preload("uid://bajf53tdbklkg")
 
+@export var bounce_pad_amount: int = 3
+
 var allBalls: Array = []
+var allBouncePads: Array = []
 
 var index = 1
 var is_dragging = false
@@ -21,12 +24,14 @@ var rng: RandomNumberGenerator
 func _ready() -> void:
 	Globals.allBalls.clear()
 	Globals.allBlockages.clear()
+	allBouncePads.clear()
 	allBalls = Globals.allBalls
 
 	rng = RandomNumberGenerator.new()
 	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
 	spawnBalls()
 	spawnBlockades(4)
+	spawnBouncePads(bounce_pad_amount)
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout
 
@@ -105,6 +110,51 @@ func spawnBlockades(amount: int) -> void:
 		
 		Globals.allBlockages.append(blockage)
 		$Blockades.add_child(blockage)
+
+
+func spawnBouncePads(amount: int) -> void:
+	for i in amount:
+		var target_pos = findValidBouncePadPosition()
+		if target_pos != Vector2.INF:
+			var pad = BOUNCE_PAD.instantiate()
+			pad.position = target_pos
+			allBouncePads.append(pad)
+			# Falls du einen Container-Node wie $BouncePads hast, kannst du auch $BouncePads.add_child(pad) nutzen
+			add_child(pad)
+
+
+func findValidBouncePadPosition() -> Vector2:
+	var attempts := 0
+	while attempts < 50:
+		# Spielfeld-Bereich mit Sicherheitsabstand zu den Außenwänden (-1060 bis 1060)
+		var pos := Vector2(rng.randf_range(-750.0, 750.0), rng.randf_range(-1750.0, 1750.0))
+		var valid := true
+		
+		# 1. Abstand zu anderen Bounce Pads prüfen
+		for pad in allBouncePads:
+			if is_instance_valid(pad) and pad.position.distance_to(pos) <= 400.0:
+				valid = false
+				break
+		
+		# 2. Abstand zu Blockaden prüfen
+		if valid:
+			for ab in Globals.allBlockages:
+				if is_instance_valid(ab) and ab.position.distance_to(pos) <= 500.0:
+					valid = false
+					break
+		
+		# 3. Abstand zu den gespawnten Bällen prüfen (damit kein Ball auf einem Pad spawnt)
+		if valid:
+			for ball in allBalls:
+				if is_instance_valid(ball) and ball.position.distance_to(pos) <= 350.0:
+					valid = false
+					break
+					
+		if valid:
+			return pos
+		attempts += 1
+		
+	return Vector2.INF
 
 
 func findValidPosition(x_pos: float, y_sign: float) -> Vector2:
