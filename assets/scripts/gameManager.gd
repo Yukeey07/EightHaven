@@ -16,6 +16,7 @@ var bot = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
+	$Blockaden.enableRandomBlockaden($Blockaden.getBlockaden())
 	spawnBalls()
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout

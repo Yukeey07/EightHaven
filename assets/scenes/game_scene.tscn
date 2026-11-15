@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://c81jgmq03kift" path="res://assets/UI/leave-nohover-nopress.png" id="18_f23ex"]
 [ext_resource type="Texture2D" uid="uid://conx5y0cq0u3i" path="res://assets/UI/leave-nohover-press.png" id="19_k1gis"]
 [ext_resource type="Texture2D" uid="uid://bat4nm57xgvyt" path="res://assets/UI/leave-hover-nopress.png" id="20_7t7aj"]
+[ext_resource type="PackedScene" uid="uid://0jfp5sv6yhj3" path="res://assets/scenes/blockade.tscn" id="21_n47tv"]
+[ext_resource type="Script" uid="uid://cfcevkulnnos3" path="res://assets/scripts/blockaden_manager.gd" id="21_t33c3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
 size = Vector2(2608, 86)
@@ -352,6 +354,112 @@ offset_left = 1891.0
 offset_top = 843.0
 offset_right = 1891.0
 offset_bottom = 843.0
+
+[node name="Blockaden" type="Node2D" parent="." unique_id=1259838609]
+script = ExtResource("21_t33c3")
+
+[node name="RS_Block" parent="Blockaden" unique_id=1051290853 instance=ExtResource("21_n47tv")]
+position = Vector2(1025, 300)
+
+[node name="RS_Block2" parent="Blockaden" unique_id=1977001057 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1017, 728)
+
+[node name="RS_Block3" parent="Blockaden" unique_id=755514328 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1045, 1187)
+
+[node name="RS_Block4" parent="Blockaden" unique_id=1514582678 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1042, 1810)
+
+[node name="RS_Block5" parent="Blockaden" unique_id=145230054 instance=ExtResource("21_n47tv")]
+position = Vector2(1031, 2102)
+
+[node name="RS_Block6" parent="Blockaden" unique_id=2128669526 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1056, -286)
+
+[node name="RS_Block7" parent="Blockaden" unique_id=1721012009 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1034, -661)
+
+[node name="RS_Block8" parent="Blockaden" unique_id=836661410 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1040, -1122)
+
+[node name="RS_Block9" parent="Blockaden" unique_id=1517129390 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1073, -1570)
+
+[node name="RS_Block10" parent="Blockaden" unique_id=1385978750 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(1034, -2012)
+
+[node name="LS_Block2" parent="Blockaden" unique_id=548610518 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1033, 300)
+rotation = -3.1415925
+
+[node name="LS_Block20" parent="Blockaden" unique_id=1202124459 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1048, -840)
+rotation = -3.1415925
+
+[node name="LS_Block21" parent="Blockaden" unique_id=1946920949 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1052, -1269)
+rotation = -3.1415925
+
+[node name="LS_Block22" parent="Blockaden" unique_id=554014592 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1030, -2016)
+rotation = -3.1415925
+
+[node name="LS_Block23" parent="Blockaden" unique_id=826970145 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1030, -2016)
+rotation = -3.1415925
+
+[node name="LS_Block3" parent="Blockaden" unique_id=725248587 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1033, -568)
+rotation = -3.1415925
+
+[node name="LS_Block4" parent="Blockaden" unique_id=517747491 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1033, -1612)
+rotation = -3.1415925
+
+[node name="LS_Block5" parent="Blockaden" unique_id=1560671195 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1029, -309)
+rotation = -3.1415925
+
+[node name="LS_Block6" parent="Blockaden" unique_id=965407539 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1068, 636)
+rotation = -3.1415925
+
+[node name="LS_Block7" parent="Blockaden" unique_id=497727258 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1015, 1150)
+rotation = -3.1415925
+
+[node name="LS_Block8" parent="Blockaden" unique_id=1088395384 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1007, 1628)
+rotation = -3.1415925
+
+[node name="LS_Block9" parent="Blockaden" unique_id=1044058243 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1007, 2064)
+rotation = -3.1415925
+
+[node name="LS_Block10" parent="Blockaden" unique_id=1234249788 instance=ExtResource("21_n47tv")]
+visible = false
+position = Vector2(-1007, 2064)
+rotation = -3.1415925
 
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Resume" to="." method="_on_resume_pressed"]
