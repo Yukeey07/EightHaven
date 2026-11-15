@@ -7,6 +7,8 @@ enum Players {
 
 var allBalls = []
 var allPockets = []
+var allBlockages = []
+
 var turnOver: bool = true
 var turn: Players = Players.PLAYER
 var shootSoundPlayed = true

@@ -69,20 +69,50 @@ func spawnBlockades(amount : int):
 		var blockage = BLOCKADE.instantiate()
 		var num = rng.randi_range(0,3)
 		print(num)
+		
 		if num == 0: # TOP LEFT
-			blockage.position = Vector2(-1060.0, randf_range(-300.0, -2000.0))
-			blockage.isLeft = true
-		elif num == 1: # TOP RIGHT
-			blockage.position = Vector2(1060.0, randf_range(-300.0, -2000.0))
-			blockage.isLeft = false
-		elif num == 2: # BOTTOM LEFT
-			blockage.position = Vector2(1060.0, randf_range(300.0, 2000.0))
-			blockage.isLeft = false
-		elif num == 3: # BOTTOM RIGHT
-			blockage.position = Vector2(1060.0, randf_range(300.0, 2000.0))
+			var target_pos = Vector2(-1060.0, randf_range(-300.0, -2000.0))
+			while !isValidPosition(target_pos):
+				target_pos = Vector2(-1060.0, randf_range(-300.0, -2000.0))
+				pass
+			blockage.position = Vector2(target_pos)
 			blockage.isLeft = false
 		
+		elif num == 1: # TOP RIGHT
+			var target_pos = Vector2(1060.0, randf_range(-300.0, -2000.0))
+			while !isValidPosition(target_pos):
+				target_pos = Vector2(1060.0, randf_range(-300.0, -2000.0))
+				pass
+			blockage.position = Vector2(target_pos)
+			blockage.isLeft = false
+		
+		elif num == 2: # BOTTOM LEFT
+			var target_pos = Vector2(-1060.0, randf_range(300.0, 2000.0))
+			while !isValidPosition(target_pos):
+				target_pos = Vector2(-1060.0, randf_range(300.0, 2000.0))
+				pass
+			blockage.position = Vector2(target_pos)
+			blockage.isLeft = false
+		
+		elif num == 3: # BOTTOM RIGHT
+			var target_pos = Vector2(-1060.0, randf_range(300.0, 2000.0))
+			while !isValidPosition(target_pos):
+				target_pos = Vector2(-1060.0, randf_range(300.0, 2000.0))
+				pass
+			blockage.position = Vector2(target_pos)
+			blockage.isLeft = false
+		
+		Globals.allBlockages.append(blockage)
 		$Blockades.add_child(blockage)
+
+func isValidPosition(pos : Vector2) -> bool:
+	for ab in Globals.allBlockages:
+		if ab.position == pos:
+			return false
+		else:
+			return true
+	
+	return false
 
 func spawnBot():
 	bot = BOT.instantiate()
