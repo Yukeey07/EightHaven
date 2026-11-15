@@ -21,6 +21,14 @@
 [ext_resource type="Texture2D" uid="uid://conx5y0cq0u3i" path="res://assets/UI/leave-nohover-press.png" id="19_k1gis"]
 [ext_resource type="Texture2D" uid="uid://bat4nm57xgvyt" path="res://assets/UI/leave-hover-nopress.png" id="20_7t7aj"]
 
+[sub_resource type="Gradient" id="Gradient_50row"]
+offsets = PackedFloat32Array(0.08490566, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vspjm"]
+gradient = SubResource("Gradient_50row")
+fill_from = Vector2(1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8qth"]
 size = Vector2(2608, 86)
 
@@ -30,16 +38,98 @@ size = Vector2(2208, 83.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aufxv"]
 size = Vector2(208, 83.5)
 
-[sub_resource type="Gradient" id="Gradient_50row"]
-offsets = PackedFloat32Array(0.08490566, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vspjm"]
-gradient = SubResource("Gradient_50row")
-fill_from = Vector2(1, 1)
-
 [node name="gameScene" type="Node2D" unique_id=1829530168]
 script = ExtResource("1_yot8c")
+
+[node name="GameOverlay" type="CanvasLayer" parent="." unique_id=1033429882]
+
+[node name="Gradient" type="TextureRect" parent="GameOverlay" unique_id=56164174]
+visible = false
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -141.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_vspjm")
+
+[node name="Controls" type="PanelContainer" parent="GameOverlay" unique_id=1879888126]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BottomControls" type="HBoxContainer" parent="GameOverlay/Controls" unique_id=924759492]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 25
+
+[node name="Pause" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1531037818]
+process_mode = 3
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("6_jd8xj")
+texture_pressed = ExtResource("7_8ycl6")
+texture_hover = ExtResource("8_fsngj")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Resume" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=482194812]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("9_0thbs")
+texture_pressed = ExtResource("10_vqtqv")
+texture_hover = ExtResource("11_8vucp")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Restart" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1710572521]
+process_mode = 3
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("9_5a2qb")
+texture_pressed = ExtResource("10_07qn0")
+texture_hover = ExtResource("11_wdaf6")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Settings" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1782092869]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("15_c068n")
+texture_pressed = ExtResource("16_n47tv")
+texture_hover = ExtResource("17_t33c3")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Quit" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1580430919]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("18_f23ex")
+texture_pressed = ExtResource("19_k1gis")
+texture_hover = ExtResource("20_7t7aj")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1633955568]
 layer = -5
@@ -69,6 +159,12 @@ expand_mode = 4
 zoom = Vector2(0.3, 0.3)
 
 [node name="Queue" parent="." unique_id=1734358920 instance=ExtResource("3_x1kwt")]
+
+[node name="PowerBar" parent="." unique_id=110637102 instance=ExtResource("5_5t2cw")]
+offset_left = 126.0
+offset_top = -470.0
+offset_right = 126.0
+offset_bottom = -470.0
 
 [node name="Pockets" type="Node" parent="." unique_id=1165862890]
 
@@ -257,101 +353,7 @@ collision_layer = 3
 position = Vector2(0, -3.4969094e-07)
 shape = SubResource("RectangleShape2D_aufxv")
 
-[node name="GameOverlay" type="CanvasLayer" parent="." unique_id=1033429882]
-
-[node name="Gradient" type="TextureRect" parent="GameOverlay" unique_id=56164174]
-visible = false
-custom_minimum_size = Vector2(0, 100)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -141.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = SubResource("GradientTexture2D_vspjm")
-
-[node name="Controls" type="PanelContainer" parent="GameOverlay" unique_id=1879888126]
-process_mode = 3
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -125.0
-offset_bottom = -45.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="BottomControls" type="HBoxContainer" parent="GameOverlay/Controls" unique_id=924759492]
-process_mode = 3
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 25
-
-[node name="Pause" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1531037818]
-process_mode = 3
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 6
-texture_normal = ExtResource("6_jd8xj")
-texture_pressed = ExtResource("7_8ycl6")
-texture_hover = ExtResource("8_fsngj")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Resume" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=482194812]
-process_mode = 3
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 6
-texture_normal = ExtResource("9_0thbs")
-texture_pressed = ExtResource("10_vqtqv")
-texture_hover = ExtResource("11_8vucp")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Restart" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1710572521]
-process_mode = 3
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 6
-texture_normal = ExtResource("9_5a2qb")
-texture_pressed = ExtResource("10_07qn0")
-texture_hover = ExtResource("11_wdaf6")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Settings" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1782092869]
-process_mode = 3
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 6
-texture_normal = ExtResource("15_c068n")
-texture_pressed = ExtResource("16_n47tv")
-texture_hover = ExtResource("17_t33c3")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="Quit" type="TextureButton" parent="GameOverlay/Controls/BottomControls" unique_id=1580430919]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 6
-texture_normal = ExtResource("18_f23ex")
-texture_pressed = ExtResource("19_k1gis")
-texture_hover = ExtResource("20_7t7aj")
-ignore_texture_size = true
-stretch_mode = 5
-
-[node name="PowerBar" parent="." unique_id=110637102 instance=ExtResource("5_5t2cw")]
-offset_left = 1891.0
-offset_top = 843.0
-offset_right = 1891.0
-offset_bottom = 843.0
+[node name="Blockades" type="Node" parent="." unique_id=953919058]
 
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Resume" to="." method="_on_resume_pressed"]

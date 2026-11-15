@@ -3,6 +3,8 @@ extends Node2D
 const BALL = preload("uid://drnq53lohvym0")
 const BOT = preload("res://assets/scenes/bot.tscn")
 
+const BLOCKADE = preload("uid://0jfp5sv6yhj3")
+
 var allBalls = Globals.allBalls
 
 var index = 1
@@ -13,10 +15,13 @@ var drag_start_pos: Vector2 = Vector2.ZERO
 const MAX_DRAG_DISTANCE: float = 500.0
 var bot = null
 
+var rng : RandomNumberGenerator
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	rng = RandomNumberGenerator.new()
 	AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.BACKGROUND_MUSIC_1)
-	$Blockaden.enableRandomBlockaden($Blockaden.getBlockaden())
+	spawnBlockades(5)
 	spawnBalls()
 	spawnBot()
 	await get_tree().create_timer(10.0).timeout
@@ -58,6 +63,26 @@ func spawnBallRow(startPos : Vector2, length: int):
 		add_child(ball)
 		startPos += Vector2(-125,0)
 	pass
+
+func spawnBlockades(amount : int):
+	for i in amount:
+		var blockage = BLOCKADE.instantiate()
+		var num = rng.randi_range(0,3)
+		print(num)
+		if num == 0: # TOP LEFT
+			blockage.position = Vector2(-1060.0, randf_range(-300.0, -2000.0))
+			blockage.isLeft = true
+		elif num == 1: # TOP RIGHT
+			blockage.position = Vector2(1060.0, randf_range(-300.0, -2000.0))
+			blockage.isLeft = false
+		elif num == 2: # BOTTOM LEFT
+			blockage.position = Vector2(1060.0, randf_range(300.0, 2000.0))
+			blockage.isLeft = false
+		elif num == 3: # BOTTOM RIGHT
+			blockage.position = Vector2(1060.0, randf_range(300.0, 2000.0))
+			blockage.isLeft = false
+		
+		$Blockades.add_child(blockage)
 
 func spawnBot():
 	bot = BOT.instantiate()

@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://0jfp5sv6yhj3"]
 
 [ext_resource type="Texture2D" uid="uid://8vt5rtfoj8ff" path="res://assets/LangeBlockade.png" id="1_1g7eu"]
+[ext_resource type="Script" uid="uid://cin0h1oupcoeq" path="res://assets/scripts/blockade.gd" id="2_gy15o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g7eu"]
 size = Vector2(84.99999, 814)
 
 [node name="Blockade" type="Sprite2D" unique_id=1051290853]
 texture = ExtResource("1_1g7eu")
+script = ExtResource("2_gy15o")
 
 [node name="Block" type="StaticBody2D" parent="." unique_id=251542348]
 position = Vector2(1456, 1200)
