@@ -35,3 +35,13 @@ func _on_body_entered(body: Node) -> void:
 	if not Globals.shootSoundPlayed:
 		AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SHOOT)
 		Globals.shootSoundPlayed = true
+		
+func makeVeryBouncy():
+	physics_material_override.bounce = 1
+	physics_material_override.friction = 0.5
+	mass = 2.5
+	
+func resetPhysics():
+	physics_material_override.bounce = 0.5
+	physics_material_override.friction = 1.5
+	mass = 5
