@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://c81jgmq03kift" path="res://assets/UI/leave-nohover-nopress.png" id="18_f23ex"]
 [ext_resource type="Texture2D" uid="uid://conx5y0cq0u3i" path="res://assets/UI/leave-nohover-press.png" id="19_k1gis"]
 [ext_resource type="Texture2D" uid="uid://bat4nm57xgvyt" path="res://assets/UI/leave-hover-nopress.png" id="20_7t7aj"]
-[ext_resource type="PackedScene" uid="uid://bajf53tdbklkg" path="res://assets/scenes/bounce_pad.tscn" id="21_n47tv"]
 
 [sub_resource type="Gradient" id="Gradient_50row"]
 offsets = PackedFloat32Array(0.08490566, 1)
@@ -355,9 +354,6 @@ position = Vector2(0, -3.4969094e-07)
 shape = SubResource("RectangleShape2D_aufxv")
 
 [node name="Blockades" type="Node" parent="." unique_id=953919058]
-
-[node name="BouncePad" parent="." unique_id=158659561 instance=ExtResource("21_n47tv")]
-position = Vector2(386, 18)
 
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="GameOverlay/Controls/BottomControls/Resume" to="." method="_on_resume_pressed"]
