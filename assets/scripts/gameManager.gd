@@ -14,7 +14,7 @@ var wait_for_stop = false
 func _ready() -> void:
 	print("test")
 	spawnBalls()
-	spawnBot()
+	#spawnBot()
 	await get_tree().create_timer(10.0).timeout
 	pass # Replace with function body.
 
@@ -29,6 +29,8 @@ func _process(_delta: float) -> void:
 		print("balls are moving")
 
 func ballsMoving():
+	allBalls = allBalls.filter(func(b): return is_instance_valid(b))
+	
 	for i: Ball in allBalls:
 		if i.sleeping:
 			return false
@@ -80,6 +82,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			var white_ball: Ball = allBalls.get(0)
 			white_ball.apply_central_impulse(-((get_global_mouse_position() + drag_offset) * 20))
 			$Queue.hide()
+			AudioService.create_audio(SoundEffect.SOUND_EFFECT_TYPE.SHOOT)
 			wait_for_stop = true
 	elif event is InputEvent:
 		if wait_for_stop:
